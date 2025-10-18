@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartChatix - Crea tu web con IA</title>
+    <!-- Link a tu CSS principal si quieres mantener el estilo global -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <nav>
+                <a href="#" class="logo">
+                    <img src="images/smartchatix_logo.png" alt="SmartChatix" class="logo-image">
+                    <span class="logo-text">SmartChatix</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#benefits">Beneficios</a>
+                    <a href="#plans">Planes</a>
+                    <a href="#onboarding">Cómo Funciona</a>
+                    <a href="#templates">Plantillas</a>
+                    <a href="#contact" class="cta-header">Solicita Nuestros Servicios</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background-image" style="background-image: linear-gradient(rgba(10, 0, 30, 0.6), rgba(10, 0, 30, 0.6)), url('images/bg_wp.jpg');"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Crea tu web en WordPress con
+                    <span class="hero-highlight">IA en minutos</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Hosting, dominio y correos corporativos incluidos. Tu contenido e imágenes insertadas automáticamente.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#plans" class="btn btn-primary">Quiero mi web ahora</a>
+                    <a href="#benefits" class="btn btn-secondary">Ver Beneficios</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="features section-gradient-2" id="benefits">
+            <div class="features-container">
+                <div class="features-header">
+                    <h2>¿Por qué elegir SmartChatix para tu web?</h2>
+                    <p class="features-subtitle">
+                        Creamos tu presencia digital profesional con tecnología de vanguardia y el toque humano que tu negocio necesita.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Web lista en minutos</h3>
+                        <p>La IA genera tu contenido y lo coloca en la plantilla automáticamente. Sin esperas, sin complicaciones.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📦</div>
+                        <h3>Todo incluido</h3>
+                        <p>Dominio, hosting premium y correos corporativos listos para usar desde el primer día.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Sin conocimientos técnicos</h3>
+                        <p>No necesitas saber programación, rutas de imágenes ni instalar plugins. Todo automatizado.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Fácil de personalizar</h3>
+                        <p>Cambia colores, logos, textos y diseño con unos simples clics. Tu marca, tu estilo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plans Section -->
+        <section class="services-section" id="plans">
+            <div class="services-container">
+                <div class="services-header">
+                    <div class="services-badge">
+                        <span class="services-badge-icon">💎</span>
+                        Planes de Hosting WordPress
+                    </div>
+                    <h2>Elige el plan perfecto para tu negocio</h2>
+                    <p class="services-subtitle">
+                        Desde emprendedores hasta empresas establecidas, tenemos la solución ideal para llevar tu presencia digital al siguiente nivel.
+                    </p>
+                </div>
+
+                <div class="services-grid" style="grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                <style>
+                    /* Opción 1: Gradientes sutiles con bordes coloridos */
+
+                    /* Plan Basic - Azul */
+                    #plans .service-card:nth-child(1) .service-front {
+                        background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+                        border: 2px solid #3b82f6 !important;
+                        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15) !important;
+                        margin-top: 20px !important; /* Agregar margen igual al badge */
+                    }
+
+                    #plans .service-card:nth-child(1):hover .service-front {
+                        background: linear-gradient(135deg, #f8faff 0%, #e0e7ff 100%) !important;
+                        box-shadow: 0 12px 35px rgba(59, 130, 246, 0.25) !important;
+                        border-color: #2563eb !important;
+                        margin-top: 20px !important; /* Mantener margen en hover */
+                    }
+
+                    /* Plan Pro - Verde (Más popular) */
+                    #plans .service-card:nth-child(2) .service-front {
+                        background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%) !important;
+                        border: 2px solid #10b981 !important;
+                        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15) !important;
+                        position: relative !important;
+                    }
+
+                    #plans .service-card:nth-child(2) .service-front::before {
+                        content: "MÁS POPULAR" !important;
+                        position: absolute !important;
+                        top: -10px !important;
+                        left: 50% !important;
+                        transform: translateX(-50%) !important;
+                        background: linear-gradient(135deg, #10b981, #059669) !important;
+                        color: white !important;
+                        padding: 5px 15px !important;
+                        border-radius: 15px !important;
+                        font-size: 0.7rem !important;
+                        font-weight: 600 !important;
+                        letter-spacing: 0.5px !important;
+                        z-index: 10 !important;
+                    }
+
+                    #plans .service-card:nth-child(2):hover .service-front {
+                        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+                        box-shadow: 0 15px 40px rgba(16, 185, 129, 0.25) !important;
+                        border-color: #059669 !important;
+                    }
+
+                    /* Plan Premium - Morado */
+                    #plans .service-card:nth-child(3) .service-front {
+                        background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%) !important;
+                        border: 2px solid #8b5cf6 !important;
+                        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15) !important;
+                        margin-top: 20px !important; /* Agregar margen igual al badge */
+                    }
+
+                    #plans .service-card:nth-child(3):hover .service-front {
+                        background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%) !important;
+                        box-shadow: 0 12px 35px rgba(139, 92, 246, 0.25) !important;
+                        border-color: #7c3aed !important;
+                        margin-top: 20px !important; /* Mantener margen en hover */
+                    }
+
+                    /* Colores de texto mejorados */
+                    #plans .service-card:nth-child(1) .service-tagline {
+                        color: #3b82f6 !important;
+                    }
+
+                    #plans .service-card:nth-child(2) .service-tagline {
+                        color: #10b981 !important;
+                    }
+
+                    #plans .service-card:nth-child(3) .service-tagline {
+                        color: #8b5cf6 !important;
+                    }
+
+                    /* Íconos con colores temáticos */
+                    #plans .service-card:nth-child(1) .service-icon {
+                        background: rgba(59, 130, 246, 0.1) !important;
+                        border: 1px solid rgba(59, 130, 246, 0.2) !important;
+                    }
+
+                    #plans .service-card:nth-child(2) .service-icon {
+                        background: rgba(16, 185, 129, 0.1) !important;
+                        border: 1px solid rgba(16, 185, 129, 0.2) !important;
+                    }
+
+                    #plans .service-card:nth-child(3) .service-icon {
+                        background: rgba(139, 92, 246, 0.1) !important;
+                        border: 1px solid rgba(139, 92, 246, 0.2) !important;
+                    }
+
+                    /* Restaurar el flip sin movimiento de posición */
+                    #plans .service-card {
+                        position: relative !important;
+                        top: 0 !important;
+                        left: 0 !important;
+                        transform: none !important;
+                    }
+
+                    #plans .service-card .service-card-inner {
+                        position: relative !important;
+                        transition: transform 0.6s ease-in-out, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+                        transform-style: preserve-3d !important;
+                    }
+
+                    #plans .service-card:hover .service-card-inner {
+                        transform: rotateY(180deg) !important;
+                    }
+
+                    /* Configurar las caras del flip correctamente */
+                    #plans .service-card .service-front,
+                    #plans .service-card .service-back {
+                        position: absolute !important;
+                        width: 100% !important;
+                        height: 100% !important;
+                        backface-visibility: hidden !important;
+                        top: 0 !important;
+                        left: 0 !important;
+                    }
+
+                    #plans .service-card .service-front {
+                        transform: rotateY(0deg) !important;
+                        z-index: 2 !important;
+                    }
+
+                    #plans .service-card .service-back {
+                        transform: rotateY(180deg) !important;
+                        z-index: 1 !important;
+                        display: block !important;
+                    }
+
+                    /* Arreglar layout de la parte trasera */
+                    #plans .service-details {
+                        padding: 20px !important;
+                        height: 100% !important;
+                        display: flex !important;
+                        flex-direction: column !important;
+                        box-sizing: border-box !important;
+                    }
+
+                    #plans .service-details h4 {
+                        margin-bottom: 15px !important;
+                        font-size: 1.2rem !important;
+                    }
+
+                    #plans .service-features {
+                        flex: 1 !important;
+                        margin-bottom: 15px !important;
+                        overflow-y: auto !important;
+                    }
+
+                    #plans .service-features li {
+                        padding: 4px 0 !important;
+                        font-size: 0.85rem !important;
+                        line-height: 1.3 !important;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+                    }
+
+                    #plans .service-btn {
+                        margin-top: auto !important;
+                        padding: 12px 20px !important;
+                        font-size: 0.9rem !important;
+                        flex-shrink: 0 !important;
+                    }
+                </style>
+                    <div class="service-card">
+                        <div class="service-card-inner">
+                            <div class="service-front">
+                                <div class="service-icon-container">
+                                    <div class="service-icon">🚀</div>
+                                    <div class="service-glow"></div>
+                                </div>
+                                <h3>Basic</h3>
+                                <div class="service-tagline">Perfecto para empezar</div>
+                                <p class="service-preview">Genera tu web con IA tú mismo. Hosting + dominio + correos incluidos.</p>
+                                <div class="stat-number" style="font-size: 2rem; margin: 20px 0;">S/ 240<span style="font-size: 1rem; color: #64748b;"> / año</span></div>
+                                <div class="service-arrow">→</div>
+                            </div>
+                            <div class="service-back">
+                                <div class="service-details">
+                                    <h4>Plan Basic</h4>
+                                    <ul class="service-features">
+                                        <li>Dominio .com incluido</li>
+                                        <li>Hosting optimizado para WordPress</li>
+                                        <li>5 cuentas de correo corporativo</li>
+                                        <li>Generación automática de contenido con IA</li>
+                                        <li>Plantillas profesionales</li>
+                                        <li>SSL gratuito</li>
+                                        <li>Soporte técnico básico</li>
+                                    </ul>
+                                    <a href="#contact" class="service-btn">Elegir Plan Basic</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card-inner">
+                            <div class="service-front">
+                                <div class="service-icon-container">
+                                    <div class="service-icon">⭐</div>
+                                    <div class="service-glow"></div>
+                                </div>
+                                <h3>Pro</h3>
+                                <div class="service-tagline">Más popular</div>
+                                <p class="service-preview">Personalización asistida. Listo para publicar con nuestro acompañamiento.</p>
+                                <div class="stat-number" style="font-size: 2rem; margin: 20px 0;">S/ 399<span style="font-size: 1rem; color: #64748b;"> / año</span></div>
+                                <div class="service-arrow">→</div>
+                            </div>
+                            <div class="service-back">
+                                <div class="service-details">
+                                    <h4>Plan Pro</h4>
+                                    <ul class="service-features">
+                                        <li>Todo lo del Plan Basic</li>
+                                        <li>Personalización asistida por expertos</li>
+                                        <li>10 cuentas de correo corporativo</li>
+                                        <li>Optimización SEO básica</li>
+                                        <li>Integración con redes sociales</li>
+                                        <li>Formularios de contacto avanzados</li>
+                                        <li>Soporte prioritario</li>
+                                    </ul>
+                                    <a href="#contact" class="service-btn">Elegir Plan Pro</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card-inner">
+                            <div class="service-front">
+                                <div class="service-icon-container">
+                                    <div class="service-icon">👑</div>
+                                    <div class="service-glow"></div>
+                                </div>
+                                <h3>Premium</h3>
+                                <div class="service-tagline">Máximo rendimiento</div>
+                                <p class="service-preview">Diseño profesional + SEO avanzado + chatbot integrado con IA.</p>
+                                <div class="stat-number" style="font-size: 2rem; margin: 20px 0;">S/ 699<span style="font-size: 1rem; color: #64748b;"> / año</span></div>
+                                <div class="service-arrow">→</div>
+                            </div>
+                            <div class="service-back">
+                                <div class="service-details">
+                                    <h4>Plan Premium</h4>
+                                    <ul class="service-features">
+                                        <li>Todo lo del Plan Pro</li>
+                                        <li>Diseño 100% personalizado</li>
+                                        <li>Chatbot inteligente integrado</li>
+                                        <li>SEO avanzado y analíticas</li>
+                                        <li>E-commerce básico incluido</li>
+                                        <li>Correos ilimitados</li>
+                                        <li>Soporte VIP 24/7</li>
+                                    </ul>
+                                    <a href="#contact" class="service-btn">Elegir Plan Premium</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services-cta">
+                    <h3>¿No estás seguro qué plan elegir?</h3>
+                    <p>Nuestro equipo te ayudará a encontrar la solución perfecta para tu negocio</p>
+                    <a href="#contact" class="services-main-cta">
+                        <span class="cta-icon">💬</span>
+                        Consulta gratuita
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works Section -->
+        <section class="stats section-gradient-3" id="onboarding">
+            <div class="stats-container">
+                <div class="features-header">
+                    <h2>¿Cómo funciona?</h2>
+                    <p class="features-subtitle">
+                        En 5 simples pasos tendrás tu sitio web profesional funcionando y generando resultados.
+                    </p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <div class="stat-label">Elige tu plan ideal</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <div class="stat-label">Envíanos por WhatsApp tus datos y pago por Yape</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <div class="stat-label">Recibe accesos de WordPress por email</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <div class="stat-label">IA crea tu web con tus datos y template</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <div class="stat-label">¡Tu web está en vivo!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Templates & Testimonials Section -->
+        <section class="features section-gradient-2" id="templates">
+            <div class="features-container">
+                <div class="features-header">
+                    <h2>Plantillas generadas por IA para cada industria</h2>
+                    <p class="features-subtitle">
+                        Nuestros diseños se adaptan automáticamente a tu sector y necesidades específicas.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">👗</div>
+                        <h3>Tienda de Ropa</h3>
+                        <p>Catálogo de productos, carrito de compras y sistema de pagos integrado.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3>Consultoría</h3>
+                        <p>Portafolio de servicios, testimonios y sistema de citas automatizado.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🍽️</div>
+                        <h3>Restaurante</h3>
+                        <p>Menú digital, reservas online y sistema de delivery integrado.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Lo que dicen nuestros clientes</h3>
+                        <p>"En minutos tuve mi web lista. ¡Súper fácil y profesional!" - Ana, Emprendedora<br><br>"El plan Pro me ayudó a personalizar todo sin complicaciones." - Carlos, Negocio Local</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="contact-background"></div>
+            <div class="contact-container">
+                <div class="contact-header">
+                    <div class="solicita-badge">
+                        <span class="badge-icon">🚀</span>
+                        Tu web profesional te espera
+                    </div>
+                    <h2>Crea tu WordPress en minutos</h2>
+                    <p class="contact-subtitle">
+                        Hosting premium, dominio personalizado y correos corporativos incluidos. Todo en un solo lugar, todo con la potencia de la IA.
+                    </p>
+
+                    <div class="service-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Configuración automática en menos de 5 minutos</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Soporte técnico especializado incluido</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Garantía de satisfacción del 100%</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>SSL y backup automático incluidos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business">Nombre de tu negocio</label>
+                            <input type="text" id="business" name="business" placeholder="Nombre de tu empresa o negocio" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plan">Plan de interés</label>
+                            <select id="plan" name="plan" required>
+                                <option value="">Selecciona un plan</option>
+                                <option value="basic">Basic - S/ 240/año</option>
+                                <option value="pro">Pro - S/ 399/año</option>
+                                <option value="premium">Premium - S/ 699/año</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Cuéntanos sobre tu proyecto</label>
+                            <textarea id="message" name="message" placeholder="Describe brevemente tu negocio y qué tipo de web necesitas..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-icon">🚀</span>
+                            Quiero mi web ahora
+                        </button>
+                    </form>
+
+                    <div class="contact-help">
+                        <p>¿Necesitas ayuda? Escríbenos a <strong>hola@smartchatix.com</strong> o llámanos al <strong>+51 999 888 777</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; 2025 SmartChatix. Todos los derechos reservados. | Transformando negocios con IA</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Elementos decorativos -->
+        <div class="floating-element float-1"></div>
+        <div class="floating-element float-2"></div>
+        <div class="floating-element float-3"></div>
+    </div>
+</body>
+</html>

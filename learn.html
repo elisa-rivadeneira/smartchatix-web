@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende Cómo Funciona - SmartChatix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fefefe;
+            color: #1a1a1a;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Gradientes suaves de fondo */
+        .section-gradient-1 {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+        }
+
+        .section-gradient-2 {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f4f8 100%);
+        }
+
+        .section-gradient-3 {
+            background: linear-gradient(135deg, #fefefe 0%, #f8f9fb 50%, #f3f4f6 100%);
+        }
+
+        /* Elementos decorativos sutiles */
+        .decorative-dots {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.05;
+            background: radial-gradient(circle, #6366f1 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+
+        .dots-top-right {
+            top: 10%;
+            right: 5%;
+        }
+
+        .dots-bottom-left {
+            bottom: 15%;
+            left: 3%;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header uniforme con index.html */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .back-button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white !important;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Hero Section */
+        .hero-learn {
+            padding: 140px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-learn h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero-learn p {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 48px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(99, 102, 241, 0.15);
+        }
+
+        .video-section p {
+            margin-top: 30px;
+            color: #64748b;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .process-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .process-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 80px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(99, 102, 241, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.15);
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+            border-radius: 20px 20px 0 0;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .step-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .step-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .step-highlight {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.03) 0%, transparent 70%);
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(99, 102, 241, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            text-align: center;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.15);
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+            border-radius: 20px 20px 0 0;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #6366f1;
+        }
+
+        .benefit-description {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+
+        .cta-description {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .transform-button {
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .transform-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .transform-button:hover::before {
+            left: 100%;
+        }
+
+        .transform-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.05));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-1 {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .float-2 {
+            width: 40px;
+            height: 40px;
+            bottom: 30%;
+            left: 8%;
+            animation-delay: -2s;
+        }
+
+        .float-3 {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            right: 15%;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.2;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 25px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-container,
+            .process-container,
+            .benefits-container,
+            .cta-content {
+                padding: 0 25px;
+            }
+            
+            .hero-learn {
+                padding: 120px 0 80px;
+            }
+            
+            .hero-learn h1 {
+                font-size: 2.5rem;
+            }
+            
+            .video-section,
+            .process-section,
+            .benefits-section,
+            .cta-section {
+                padding: 80px 0;
+            }
+            
+            .process-steps,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-title,
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animaciones */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Focus para accesibilidad */
+        .nav-links a:focus,
+        .back-button:focus,
+        .transform-button:focus {
+            outline: 2px solid #6366f1;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <nav>
+                <a href="#" class="logo">
+                    <div class="logo-icon">S</div>
+                    SmartChatix
+                </a>
+                <div class="nav-links">
+                    <a href="#proceso">Proceso</a>
+                    <a href="#beneficios">Beneficios</a>
+                    <a href="#video">Video Demo</a>
+                    <a href="index.html" class="back-button">← Volver al Inicio</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-learn section-gradient-1">
+            <div class="decorative-dots dots-top-right"></div>
+            <div class="floating-element float-1"></div>
+            <div class="floating-element float-2"></div>
+            
+            <div class="hero-container">
+                <h1 class="fade-in">
+                    Descubre el Poder de la <span class="hero-highlight">Automatización Inteligente</span>
+                </h1>
+                <p class="fade-in fade-in-delay-1">
+                    No es solo tecnología, es la revolución que tu empresa necesita. 
+                    Aprende cómo nuestros sistemas multi-agente transforman procesos complejos 
+                    en automatización simple y rentable.
+                </p>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section section-gradient-2" id="video">
+            <div class="decorative-dots dots-bottom-left"></div>
+            
+            <div class="video-container" onclick="playVideo()" 
+                 style="aspect-ratio:16/9; background:url('images/thumbnail_smartchatix.jpg') center/cover no-repeat;
+                        display:flex; align-items:center; justify-content:center;">
+              
+              <!-- Botón Play -->
+              <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius:50%; width:80px; height:80px; 
+                          display:flex; align-items:center; justify-content:center; 
+                          box-shadow:0 8px 20px rgba(99, 102, 241, 0.3);">
+                <div style="width:0; height:0; border-left:20px solid white; 
+                            border-top:12px solid transparent; border-bottom:12px solid transparent; margin-left:5px;">
+                </div>
+              </div>
+            </div>
+            <p class="fade-in">
+                *Video explicativo completo sobre nuestra tecnología y casos de uso reales
+            </p>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section section-gradient-3" id="proceso">
+            <div class="floating-element float-3"></div>
+            
+            <div class="process-container">
+                <h2 class="process-title fade-in">Así Revolucionamos Tu Empresa</h2>
+                <p class="process-subtitle fade-in">
+                    Un proceso simple pero poderoso que transforma tu operación en semanas, no años.
+                </p>
+                
+                <div class="process-steps">
+                    <div class="step-card fade-in">
+                        <div class="step-number">1</div>
+                        <h3>Análisis Profundo</h3>
+                        <p>
+                            Mapeamos cada proceso de tu empresa. Identificamos 
+                            puntos de fricción, cuellos de botella y oportunidades de automatización.
+                        </p>
+                        <div class="step-highlight">
+                            ⏱️ Resultados en 48 horas - Diagnóstico completo gratuito
+                        </div>
+                    </div>
+                    
+                    <div class="step-card fade-in fade-in-delay-1">
+                        <div class="step-number">2</div>
+                        <h3>Diseño de Agentes IA</h3>
+                        <p>
+                            Creamos un ecosistema de agentes especializados que trabajan en equipo. 
+                            Cada agente domina una función específica pero colabora con otros.
+                        </p>
+                        <div class="step-highlight">
+                            🤖 Agentes personalizados - Entrenados en tu industria específica
+                        </div>
+                    </div>
+                    
+                    <div class="step-card fade-in fade-in-delay-2">
+                        <div class="step-number">3</div>
+                        <h3>Implementación Gradual</h3>
+                        <p>
+                            Desplegamos los agentes por fases. Empezamos con procesos simples 
+                            y escalamos hacia automatización completa sin interrumpir operaciones.
+                        </p>
+                        <div class="step-highlight">
+                            📈 Transformación visible en poco tiempo
+                        </div>
+                    </div>
+                    
+                    <div class="step-card fade-in fade-in-delay-3">
+                        <div class="step-number">4</div>
+                        <h3>Optimización Continua</h3>
+                        <p>
+                            Los agentes aprenden y se mejoran constantemente. Monitoreamos 
+                            performance y optimizamos automáticamente para máxima eficiencia.
+                        </p>
+                        <div class="step-highlight">
+                            🔄 Mejora automática 24/7 - Sin intervención manual necesaria
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section section-gradient-1" id="beneficios">
+            <div class="benefits-container">
+                <h2 class="process-title fade-in">¿Por Qué Elegir SmartChatix?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item fade-in">
+                        <span class="benefit-icon">⚡</span>
+                        <h3 class="benefit-title">Velocidad Extrema</h3>
+                        <p class="benefit-description">
+                            Implementación en semanas, no meses. 
+                            Resultados visibles desde el primer día.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item fade-in fade-in-delay-1">
+                        <span class="benefit-icon">🎯</span>
+                        <h3 class="benefit-title">Resultados Confiables</h3>
+                        <p class="benefit-description">
+                            Automatización que reduce errores y aumenta la calidad de tus procesos día a día.
+                        </p>
+                    </div>
+
+                    <div class="benefit-item fade-in fade-in-delay-2">
+                        <span class="benefit-icon">💰</span>
+                        <h3 class="benefit-title">Valor Real y Medible</h3>
+                        <p class="benefit-description">
+                            Menos gastos, más resultados. Empieza a notar la diferencia en tus operaciones desde el primer mes.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item fade-in fade-in-delay-3">
+                        <span class="benefit-icon">🌟</span>
+                        <h3 class="benefit-title">Innovación sin Fronteras</h3>
+                        <p class="benefit-description">
+                            Tecnología creada para trascender mercados. Escalable, global y siempre lista para nuevos retos.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item fade-in">
+                        <span class="benefit-icon">🔒</span>
+                        <h3 class="benefit-title">Seguridad a tu Medida</h3>
+                        <p class="benefit-description">
+                            Elige dónde alojar tu solución: en la nube o en tus propios servidores. Siempre con protección de primer nivel.
+                        </p>
+                    </div>
+
+                    <div class="benefit-item fade-in fade-in-delay-1">
+                        <span class="benefit-icon">📱</span>
+                        <h3 class="benefit-title">Control Total</h3>
+                        <p class="benefit-description">
+                            Dashboard intuitivo. Monitorea y controla 
+                            toda tu automatización desde una app.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section section-gradient-2">
+            <div class="cta-content">
+                <h2 class="cta-title fade-in">¿Listo para Transformar tu Empresa?</h2>
+                <p class="cta-description fade-in">
+                    No esperes a que la competencia se adelante. La automatización inteligente 
+                    ya está aquí y está cambiando las reglas del juego en todas las industrias.
+                </p>
+                <a href="#empieza" class="transform-button fade-in">
+                    🚀 Empieza tu Transformación Ahora
+                </a>
+                <p style="margin-top: 30px; color: #64748b; font-size: 0.9rem;">
+                    Consulta inicial gratuita • Sin compromisos • Resultados garantizados
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Video placeholder functionality
+        function playVideo() {
+            const videoContainer = document.querySelector('.video-container');
+            videoContainer.innerHTML = `
+                <video controls autoplay poster="images/thumbnail_smartchatix.jpg" width="100%" style="border-radius: 12px;">
+                    <source src="videos/smartchatix_elvideo3.webm" type="video/webm">
+                    <source src="videos/smartchatix_elvideo.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            `;
+        }
+
+        // Animaciones de scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animaciones
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header con efecto suave
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(99, 102, 241, 0.08)';
+                header.style.borderBottom = '1px solid rgba(99, 102, 241, 0.12)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+                header.style.borderBottom = '1px solid rgba(99, 102, 241, 0.08)';
+            }
+        });
+
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#empieza') {
+                    // Redirigir a la sección de transformación
+                    window.location.href = 'index.html#demo';
+                    return;
+                }
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efectos hover mejorados en cards
+        document.querySelectorAll('.step-card, .benefit-item, .transform-button').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animación de iconos de beneficios
+        document.querySelectorAll('.benefit-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.2) rotate(10deg)';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Smooth scroll mejorado
+        function smoothScrollTo(target, duration = 1000) {
+            const targetElement = document.querySelector(target);
+            if (!targetElement) return;
+
+            const targetPosition = targetElement.offsetTop - 100;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Inicializar todo
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animación de entrada escalonada
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach((el, index) => {
+                    el.style.animationDelay = (index * 0.1) + 's';
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

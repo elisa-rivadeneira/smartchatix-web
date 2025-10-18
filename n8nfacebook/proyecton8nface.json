@@ -1,0 +1,60 @@
+{
+  "name": "Facebook Auto Post Basic",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 10,
+              "minute": 0
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "message",
+              "value": "🚀 Publicación automática de prueba: Hola desde SmartChatX"
+            }
+          ]
+        }
+      },
+      "name": "Set Post Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "authentication": "none",
+        "url": "https://graph.facebook.com/v17.0/YOUR_PAGE_ID/feed",
+        "method": "POST",
+        "jsonParameters": true,
+        "bodyParametersJson": "{\"message\":\"{{$json[\"message\"]}}\"}",
+        "headerParametersJson": "{\"Authorization\":\"Bearer YOUR_PAGE_ACCESS_TOKEN\"}",
+        "responseFormat": "json"
+      },
+      "name": "Post to Facebook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": { "main": [[{"node": "Set Post Content","type": "main","index": 0}]] },
+    "Set Post Content": { "main": [[{"node": "Post to Facebook","type": "main","index": 0}]] }
+  },
+  "active": false,
+  "settings": {},
+  "id": "1"
+}
+

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrícula - Curso Domina la IA en 5 Días | SmartChatix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            min-height: 100vh;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #fbbf24;
+        }
+
+        .header-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .progress-text {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #10b981, #34d399);
+            height: 100%;
+            width: 90%;
+            border-radius: 4px;
+            animation: progressFill 1s ease-out;
+        }
+
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: 90%; }
+        }
+
+        /* Main Content */
+        .payment-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Course Summary */
+        .course-summary {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fbbf24;
+        }
+
+        .course-details {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .course-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-detail:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fbbf24;
+        }
+
+        /* Price Section */
+        .price-section {
+            text-align: center;
+            margin: 32px 0;
+            padding: 24px;
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .price-original {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .price-current {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .price-savings {
+            font-size: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Discount Code Section */
+        .discount-section {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discount-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        .discount-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .discount-title {
+            margin-bottom: 16px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .discount-input-container {
+            display: flex;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .discount-input {
+            flex: 1;
+            padding: 14px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .discount-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .discount-btn {
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .discount-message {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            min-height: 20px;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            margin: 32px 0;
+        }
+
+        .method-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            color: #fbbf24;
+        }
+
+        .yape-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            margin-bottom: 24px;
+        }
+
+        .yape-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .yape-logo {
+            background: #7c3aed;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .yape-title {
+            color: #7c3aed;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 16px;
+            border-radius: 16px;
+            display: inline-block;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(45deg, #e5e7eb, #f3f4f6);
+            border: 2px dashed #9ca3af;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .yape-info {
+            color: #374151;
+        }
+
+        .yape-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .yape-amount {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #059669;
+        }
+
+        /* Quick Form */
+        .quick-form-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-title {
+            color: #fbbf24;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .quick-form {
+            display: grid;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-input {
+            padding: 14px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #10b981;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-tip {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Manual Steps */
+        .manual-steps {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .manual-title {
+            color: #fbbf24;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .step-number {
+            background: #10b981;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .step-description {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 18px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin: 8px;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            margin: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Security & Guarantee */
+        .security-section {
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+
+        .security-title {
+            color: #10b981;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            text-align: center;
+        }
+
+        .security-item {
+            padding: 12px;
+        }
+
+        .security-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .header-title {
+                font-size: 1.8rem;
+            }
+
+            .payment-container {
+                padding: 24px;
+            }
+
+            .price-current {
+                font-size: 2.5rem;
+            }
+
+            .qr-placeholder {
+                width: 160px;
+                height: 160px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn-whatsapp,
+            .btn-secondary {
+                width: 100%;
+                max-width: 320px;
+                margin: 8px auto;
+                display: block;
+            }
+
+            .discount-input-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .discount-input {
+                width: 100%;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Success animations */
+        .price-animate {
+            animation: priceChange 0.6s ease;
+        }
+
+        @keyframes priceChange {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); color: #10b981; }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header fade-in">
+            <div class="logo"><img src="images/smartchatix_logo.png" style="width:70px">SmartChatix</div>
+            <h1 class="header-title">Finalizar Matrícula</h1>
+            <p class="header-subtitle">Curso: Domina la IA en 5 Días</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container fade-in fade-in-delay-1">
+            <div class="progress-text">Proceso de Matrícula: Paso 2 de 2</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Main Payment Container -->
+        <div class="payment-container fade-in fade-in-delay-2">
+            
+            <!-- Course Summary -->
+            <div class="course-summary">
+                <h3 class="course-title">📚 Resumen de tu Compra</h3>
+                <div class="course-details">
+                    <div class="course-detail">
+                        <span>Curso intensivo de 5 días</span>
+                        <span>✅</span>
+                    </div>
+                    <div class="course-detail">
+                        <span>Acceso de por vida</span>
+                        <span>✅</span>
+                    </div>
+                    <div class="course-detail">
+                        <span>Kit de plantillas premium</span>
+                        <span>✅</span>
+                    </div>
+                    <div class="course-detail">
+                        <span>Certificado oficial</span>
+                        <span>✅</span>
+                    </div>
+                    <div class="course-detail">
+                        <span>Garantía 30 días</span>
+                        <span>✅</span>
+                    </div>
+                    <div class="course-detail">
+                        <span><strong>TOTAL A PAGAR</strong></span>
+                        <span><strong id="totalAmount">S/. 249</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Section -->
+            <div class="price-section" id="priceSection">
+                <div class="price-original">Precio regular: S/. 399</div>
+                <div class="price-current" id="currentPrice">S/. 249</div>
+                <div class="price-savings" id="priceSavings">🔥 Ahorras S/. 150</div>
+            </div>
+
+            <!-- Discount Code Section -->
+            <div class="discount-section">
+                <div class="discount-content">
+                    <h4 class="discount-title">🎁 ¿Tienes un Código de Descuento?</h4>
+                    
+                    <div class="discount-input-container">
+                        <input type="text" 
+                               id="discountCode" 
+                               class="discount-input"
+                               placeholder="Ingresa tu código aquí" 
+                               onkeyup="checkDiscountCode(event)"
+                               autocomplete="off">
+                        
+                        <button onclick="applyDiscount()" 
+                                id="applyBtn"
+                                class="discount-btn">
+                            Aplicar
+                        </button>
+                    </div>
+                    
+                    <div id="discountMessage" class="discount-message"></div>
+                </div>
+            </div>
+
+            <!-- Quick Form (Optional) -->
+            <div class="quick-form-section">
+                <h4 class="form-title">⚡ Acelera tu Acceso (Opcional)</h4>
+                <p class="form-subtitle">
+                    Llena estos datos para recibir tu acceso AÚN MÁS RÁPIDO
+                </p>
+                
+                <form id="quickForm" class="quick-form">
+                    <input type="text" 
+                           id="fullName" 
+                           class="form-input"
+                           placeholder="Nombre completo" 
+                           required>
+                    
+                    <input type="email" 
+                           id="email" 
+                           class="form-input"
+                           placeholder="Email" 
+                           required>
+                    
+                    <input type="tel" 
+                           id="phone" 
+                           class="form-input"
+                           placeholder="Celular (opcional)">
+                </form>
+                
+                <div class="form-tip">
+                    💡 También puedes enviar estos datos por WhatsApp después del pago
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="payment-methods">
+                <h3 class="method-title">💳 Forma de Pago</h3>
+                
+                <!-- Yape Payment -->
+                <div class="yape-container">
+                    <div class="yape-header">
+                        <div class="yape-logo">S/</div>
+                        <div class="yape-title">Pagar con Yape</div>
+                    </div>
+                    
+                    <div class="qr-container">
+                        <!-- Reemplaza este div con tu QR real -->
+                        <div class="qr-placeholder">
+                            <img src="images/pagaconyape.png"><br>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="yape-info">
+                        <div class="yape-name">Elisa Rivadeneira Quiroz: 967717179</div>
+                        <div class="yape-amount" id="yapeAmount">Monto: S/. 249</div>
+                    </div>
+                </div>
+
+                <!-- Manual Steps -->
+                <div class="manual-steps">
+                    <h4 class="manual-title">📝 Paga con Yape</h4>
+                    
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Envía el monto</div>
+                            <div class="step-description" id="stepAmount">S/. 249 - Concepto: "Curso IA SmartChatix"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Envía comprobante</div>
+                            <div class="step-description">Captura de pantalla por WhatsApp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button onclick="sendToWhatsApp()" class="btn-whatsapp">
+                    💬 Enviar Comprobante por WhatsApp
+                </button>
+                
+                <a href="tel:+51987654321" class="btn-secondary">
+                    📞 Llamar: +51 987 654 321
+                </a>
+            </div>
+
+            <!-- Security Section -->
+            <div class="security-section">
+                <h4 class="security-title">🛡️ Tu Pago está Protegido</h4>
+                <div class="security-grid">
+                    <div class="security-item">
+                        <span class="security-icon">⚡</span>
+                        <strong>Acceso Inmediato</strong><br>
+                        En 2 horas máximo
+                    </div>
+                    <div class="security-item">
+                        <span class="security-icon">🔒</span>
+                        <strong>Pago Seguro</strong><br>
+                        Yape oficial verificado
+                    </div>
+                    <div class="security-item">
+                        <span class="security-icon">↩️</span>
+                        <strong>Garantía 30 días</strong><br>
+                        Reembolso completo
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2025 SmartChatix. Todos los derechos reservados.</p>
+            <p style="margin-top: 8px; font-size: 0.9rem;">
+                <a href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Términos y Condiciones</a> | 
+                <a href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Política de Privacidad</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let currentPrice = 249;
+        let isDiscountApplied = false;
+
+        // Verificar código en tiempo real
+        function checkDiscountCode(event) {
+            const code = event.target.value.toUpperCase();
+            const applyBtn = document.getElementById('applyBtn');
+            
+            if (code === 'TRANSFORMACION IA' || code === 'TRANSFORMACIONIA') {
+                applyBtn.style.background = '#10b981';
+                applyBtn.style.borderColor = '#10b981';
+                applyBtn.innerHTML = '✅ Aplicar';
+            } else if (code.length > 0) {
+                applyBtn.style.background = '#ef4444';
+                applyBtn.style.borderColor = '#ef4444';
+                applyBtn.innerHTML = '❌ Inválido';
+            } else {
+                applyBtn.style.background = 'rgba(255,255,255,0.2)';
+                applyBtn.style.borderColor = 'rgba(255,255,255,0.3)';
+                applyBtn.innerHTML = 'Aplicar';
+            }
+            
+            if (event.key === 'Enter') {
+                applyDiscount();
+            }
+        }
+
+        // Aplicar descuento
+        function applyDiscount() {
+            const code = document.getElementById('discountCode').value.toUpperCase();
+            const messageDiv = document.getElementById('discountMessage');
+            
+            if (code === 'TRANSFORMACION IA' || code === 'TRANSFORMACIONIA') {
+                if (!isDiscountApplied) {
+                    // Aplicar descuento
+                    animatePriceChange(249, 199);
+                    isDiscountApplied = true;
+                    
+                    messageDiv.innerHTML = `
+                        <div style="background: rgba(16, 185, 129, 0.3); border: 2px solid #10b981; border-radius: 8px; padding: 12px; margin-top: 8px;">
+                            <strong style="color: #10b981;">🎉 ¡CÓDIGO APLICADO! Ahorro adicional de S/. 50</strong>
+                        </div>
+                    `;
+                    
+                    // Deshabilitar input
+                    document.getElementById('discountCode').disabled = true;
+                    document.getElementById('discountCode').style.opacity = '0.6';
+                    document.getElementById('applyBtn').disabled = true;
+                    document.getElementById('applyBtn').innerHTML = '✅ Aplicado';
+                    document.getElementById('applyBtn').style.opacity = '0.6';
+                    
+                    // Confetti effect
+                    createConfetti();
+                    
+                } else {
+                    messageDiv.innerHTML = `
+                        <div style="color: #fbbf24;">
+                            ✅ Código ya aplicado
+                        </div>
+                    `;
+                }
+            } else if (code.length > 0) {
+                messageDiv.innerHTML = `
+                    <div style="background: rgba(239, 68, 68, 0.3); border: 2px solid #ef4444; border-radius: 8px; padding: 12px; margin-top: 8px;">
+                        <strong style="color: #ef4444;">❌ Código inválido. Verifica e intenta nuevamente.</strong>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div style="color: rgba(255,255,255,0.7);">
+                        💡 Ingresa un código de descuento válido
+                    </div>
+                `;
+            }
+        }
+
+        // Animar cambio de precio
+        function animatePriceChange(fromPrice, toPrice) {
+            const priceElement = document.getElementById('currentPrice');
+            const savingsElement = document.getElementById('priceSavings');
+            const totalElement = document.getElementById('totalAmount');
+            const yapeElement = document.getElementById('yapeAmount');
+            const stepElement = document.getElementById('stepAmount');
+            
+            // Animación de cambio
+            priceElement.classList.add('price-animate');
+            
+            setTimeout(() => {
+                currentPrice = toPrice;
+                priceElement.innerHTML = `S/. ${toPrice}`;
+                savingsElement.innerHTML = '🔥 Ahorras S/. 200';
+                totalElement.innerHTML = `S/. ${toPrice}`;
+                yapeElement.innerHTML = `Monto: S/. ${toPrice}`;
+                stepElement.innerHTML = `S/. ${toPrice} - Concepto: "Curso IA SmartChatix"`;
+                
+                priceElement.classList.remove('price-animate');
+            }, 300);
+        }
+
+        // Efecto confetti
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.background = ['#10b981', '#fbbf24', '#3b82f6', '#ef4444'][Math.floor(Math.random() * 4)];
+                confetti.style.zIndex = '9999';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.borderRadius = '50%';
+                
+                document.body.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: 'translateY(-10px) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(100vh) rotate(720deg)`, opacity: 0 }
+                ], {
+                    duration: 3000,
+                    easing: 'cubic-bezier(0.5, 0, 0.5, 1)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        // Generate WhatsApp message
+        function sendToWhatsApp() {
+            const name = document.getElementById('fullName').value || '[Tu nombre]';
+            const email = document.getElementById('email').value || '[Tu email]';
+            const phone = document.getElementById('phone').value || 'No proporcionado';
+            const discountUsed = isDiscountApplied ? 'Sí (TRANSFORMACION IA)' : 'No';
+            
+            const message = `¡Hola! Acabo de realizar el pago de S/.${currentPrice} por Yape para el Curso de IA. Te envío mi comprobante.
+
+📋 MIS DATOS:
+• Nombre: ${name}
+• Email: ${email}
+• Celular: ${phone}
+• Código descuento usado: ${discountUsed}
+
+¡Gracias! Espero mi acceso al curso.`;
+
+            const whatsappUrl = `https://wa.me/51987654321?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Auto-fill form validation
+        document.getElementById('quickForm').addEventListener('input', function() {
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            
+            const button = document.querySelector('.btn-whatsapp');
+            if (name && email) {
+                button.style.background = '#059669';
+                button.innerHTML = '💬 Enviar Datos + Comprobante';
+            } else {
+                button.style.background = '#25D366';
+                button.innerHTML = '💬 Enviar Comprobante por WhatsApp';
+            }
+        });
+
+        // Animations on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

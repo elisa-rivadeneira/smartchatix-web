@@ -1,0 +1,10 @@
+videos/
+*.mp4
+*.webm
+*.avi
+*.mov
+*.mkv
+*.apk
+.git_backup/
+*.zip
+*.tar.gz

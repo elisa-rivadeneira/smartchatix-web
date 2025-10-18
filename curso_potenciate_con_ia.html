@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domina la IA en 5 Días - Transforma tu Vida y Carrera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Countdown Banner */
+        .countdown-banner {
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .countdown-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .countdown-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .countdown-text {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .timer-unit {
+            text-align: center;
+            min-width: 45px;
+        }
+
+        .timer-number {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 900;
+            line-height: 1;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .timer-label {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .timer-separator {
+            font-size: 1.4rem;
+            font-weight: bold;
+            opacity: 0.8;
+            margin: 0 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-image: url('images/hackaton.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(59, 130, 246, 0.10) 0%, transparent 50%);
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #fbbf24;
+            margin-bottom: 16px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 48px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .urgency-text {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1d63cc, #324ba0);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(121, 166, 235, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(68, 168, 250, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 18px 36px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            opacity: 0.9;
+        }
+
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #d8f0d2 0%, #66fab0 50%, #10af5f 100%);
+        }
+
+        .problem-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+              .version-1 .problem-title {
+            color: #92400e;
+        }
+
+        .version-2 .problem-title {
+            color: #5b21b6;
+        }
+
+        .version-3 .problem-title {
+            color: #065f46;
+        }
+
+        .problem-list {
+            list-style: none;
+            margin: 0 0 32px 0;
+            padding: 0;
+        }
+
+        .problem-list li {
+            margin: 18px 0;
+            padding: 22px 28px;
+            border-radius: 16px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .version-1 .problem-list li {
+            background: rgba(252, 211, 77, 0.4);
+            border-left: 5px solid #059669;
+            color: #78350f;
+        }
+
+        .version-2 .problem-list li {
+            background: rgba(196, 181, 253, 0.4);
+            border-left: 5px solid #7c3aed;
+            color: #4c1d95;
+        }
+
+        .version-3 .problem-list li {
+            background: rgba(167, 243, 208, 0.4);
+            border-left: 5px solid #059669;
+            color: #064e3b;
+        }
+
+        .problem-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-list li::before {
+            font-size: 1.4rem;
+            margin-right: 12px;
+            display: inline-block;
+        }
+
+        .version-1 .problem-list li::before {
+            content: '🎯';
+        }
+
+        .version-2 .problem-list li::before {
+            content: '🚀';
+        }
+
+        .version-3 .problem-list li::before {
+            content: '💎';
+        }
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 24px;
+        }
+
+        .section-title{
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .funciona{
+            color: #1a1a1a;
+        }
+
+        h3.section-title.funciona{
+        font-size: 1.5rem !important;
+        color: #777777 !important;
+            }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1f2937;
+        }
+
+        .benefit-card p {
+            color: #6b7280;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+        }
+
+        .curriculum .section-title {
+            color: white;
+        }
+
+        .curriculum .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .modules-grid {
+            display: grid;
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .module-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .module-day {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            min-width: 100px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .module-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            flex: 1;
+        }
+
+        .module-objective {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            color: #60a5fa;
+        }
+
+        .module-topics {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .module-topics li {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .module-topics li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .module-result {
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Target Audience */
+        .target-audience {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .audience-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(251, 191, 36, 0.15);
+        }
+
+        .audience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.25);
+        }
+
+        .audience-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .audience-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #78350f;
+        }
+
+        .audience-card p {
+            color: #92400e;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        /* Price Section */
+        .price-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .price-container {
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin: 48px auto;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .price-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .price-original {
+            font-size: 1.8rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .price-period {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+        }
+
+        .guarantee {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+            color: #ffffff;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .guarantee-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fbbf24;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            padding: 60px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .countdown-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .countdown-text {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .price-container {
+                margin: 32px 16px;
+                padding: 40px 24px;
+            }
+
+            .price {
+                font-size: 3rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Countdown Banner -->
+    <div class="countdown-banner">
+        <div class="countdown-content">
+            <span class="countdown-text">⏰ CUPOS LIMITADOS - TERMINA EN:</span>
+            <div class="countdown-timer" id="countdown">
+                <div class="timer-unit">
+                    <span class="timer-number" id="days">02</span>
+                    <span class="timer-label">Días</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-unit">
+                    <span class="timer-number" id="hours">14</span>
+                    <span class="timer-label">Horas</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-unit">
+                    <span class="timer-number" id="minutes">27</span>
+                    <span class="timer-label">Min</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-unit">
+                    <span class="timer-number" id="seconds">53</span>
+                    <span class="timer-label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge fade-in">
+                    ⭐ ÚLTIMOS CUPOS DISPONIBLES
+                </div>
+                
+                <h1 class="fade-in fade-in-delay-1">
+                    Domina la <span class="hero-highlight">Inteligencia Artificial</span><br>
+                    en Solo 5 Días
+                </h1>
+                
+                <p class="hero-subtitle fade-in fade-in-delay-2">
+                    Multiplica tu Potencial y Conviértete en Imparable
+                </p>
+                
+                <p class="hero-description fade-in fade-in-delay-3">
+                    Transforma tu carrera, multiplica tu productividad y automatiza tu éxito con el poder de la IA. 
+                    <strong>Resultados garantizados desde el primer día.</strong>
+                </p>
+
+                <!-- <div class="urgency-text fade-in">
+                    ⚡ Solo quedan 47 cupos de 200 disponibles
+                </div> -->
+                
+                <div class="cta-buttons fade-in">
+                    <a href="inscripcionia.html" class="btn-primary pulse">
+                        MATRICÚLATE AHORA
+                    </a>
+                    <a href="#programa" class="btn-secondary">
+                        Ver Programa Completo
+                    </a>
+                </div>
+                
+                <div class="social-proof fade-in">
+                    <div class="proof-item">
+                        <span>🎯</span>
+                        <span>5 Días Intensivos</span>
+                    </div>
+                    <div class="proof-item">
+                        <span>⚡</span>
+                        <span>Resultados Inmediatos</span>
+                    </div>
+                    <div class="proof-item">
+                        <span>🚀</span>
+                        <span>100% Práctico</span>
+                    </div>
+                    <div class="proof-item">
+                        <span>💎</span>
+                        <span>Acceso de por Vida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section version-3">
+        <div class="container">
+            <div class="problem-content">
+                <h2 class="problem-title">¿Listo para convertirte en la élite profesional de tu industria?</h2>
+
+                Este curso es para quienes buscan diferenciarse y liderar. Si aspiras a ser el referente admirado por tu dominio tecnológico y visión estratégica, si quieres esa ventaja competitiva que abra puertas que otros no ven, y deseas multiplicar tu impacto liderando la transformación digital con resultados reales y crecimiento acelerado, entonces este es tu lugar.
+
+                <br><br>
+                <p style="font-size: 1.3rem; font-weight: 700; color: #1e40af;">
+                    <strong>🚀 La inteligencia artificial es tu escalera hacia la élite profesional, y nosotros tenemos la fórmula para llevarte allí.
+</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="beneficios">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge fade-in">
+                    <span>✨</span>
+                    TRANSFORMACIÓN GARANTIZADA
+                </div>
+                <h2 class="section-title fade-in">Lo Que Lograrás en Solo 5 Días</h2>
+                <p class="section-subtitle fade-in">
+                    No más frustración. No más tiempo perdido. Solo resultados reales y medibles que cambiarán tu forma de trabajar para siempre.
+                </p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Dominio Total de Prompts</h3>
+                    <p>Aprende el "lenguaje secreto" de la IA para obtener resultados perfectos cada vez. Sin más respuestas vagas o inútiles.</p>
+                </div>
+                
+                <div class="benefit-card fade-in fade-in-delay-1">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Ahorra 15+ Horas Semanales</h3>
+                    <p>Automatiza tareas repetitivas y enfócate en lo que realmente importa. Tiempo que recuperas = dinero que ganas.</p>
+                </div>
+                
+                <div class="benefit-card fade-in fade-in-delay-2">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Multiplica tus Ingresos</h3>
+                    <p>Usa IA para crear contenido que vende, analizar oportunidades de negocio y tomar decisiones más inteligentes.</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Asistente Personal Premium</h3>
+                    <p>Transforma cualquier IA en tu consultor personal, coach de vida y estratega de negocios disponible 24/7.</p>
+                </div>
+                
+                <div class="benefit-card fade-in fade-in-delay-1">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Mentalidad de Estratega</h3>
+                    <p>Piensa como un experto en IA, no solo como usuario. Desarrolla una ventaja competitiva que pocos tienen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="programa">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge fade-in" style="background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.3);">
+                    <span>🎓</span>
+                    PROGRAMA INTENSIVO
+                </div>
+                <h2 class="section-title fade-in">Tu Transformación de 5 Días</h2>
+                <p class="section-subtitle fade-in">
+                    Cada día construye sobre el anterior. Cada módulo te lleva un paso más cerca de dominar la IA completamente.
+                </p>
+            </div>
+            
+            <div class="modules-grid">
+                <div class="module-card fade-in">
+                    <div class="module-header">
+                        <div class="module-day">DÍA 1</div>
+                        <h3>Desbloquea el Código Secreto de la IA</h3>
+                    </div>
+                    <div class="module-objective">
+                        <strong>🎯 Objetivo:</strong> Que pases de frustración a confianza total
+                    </div>
+                    <ul class="module-topics">
+                        <li>Los 3 errores críticos que el 95% comete (y por qué no obtienen resultados)</li>
+                        <li>El Framework "C.R.E.A.R" para prompts que siempre funcionan</li>
+                        <li>20 plantillas profesionales para resultados inmediatos</li>
+                        <li>Tu primer asistente IA personal funcionando</li>
+                        
+                    </ul>
+                    <div class="module-result">
+                        <strong>🎯 Resultado del día:</strong> Tu primer asistente IA funcionando en menos de 2 horas
+                    </div>
+                </div>
+                
+                <div class="module-card fade-in fade-in-delay-1">
+                    <div class="module-header">
+                        <div class="module-day">DÍA 2</div>
+                        <h3>Tu Vida en Piloto Automático</h3>
+                    </div>
+                    <div class="module-objective">
+                        <strong>🎯 Objetivo:</strong> Que veas resultados inmediatos en tu día a día
+                    </div>
+                    <ul class="module-topics">
+                        <li>Sistema "IA Personal": organización, aprendizaje y bienestar</li>
+                        <li>Cómo la IA puede ahorrarte 2-3 horas diarias (casos reales)</li>
+                        <li>Tu "coach de vida" personal disponible 24/7</li>
+                    </ul>
+                    <div class="module-result">
+                        <strong>🎯 Resultado del día:</strong> Un sistema personal que funciona sin ti
+                    </div>
+                </div>
+                
+             <div class="module-card fade-in fade-in-delay-2">
+                <div class="module-header">
+                    <div class="module-day">DÍA 3</div>
+                    <h3>Multiplica tu Valor con IA</h3>
+                </div>
+                <div class="module-objective">
+                    <strong>🎯 Objetivo:</strong> Que uses IA para generar valor económico directo (sin automatización compleja)
+                </div>
+                <ul class="module-topics">
+                    <li>IA que vende: contenido que convierte en ventas reales</li>
+                    <li>Tu consultor de negocios 24/7: análisis y estrategias</li>
+                    <li>Optimización inteligente (sin código ni complicaciones)</li>
+                </ul>
+                <div class="module-result">
+                    <strong>🎯 Resultado del día:</strong> Un proceso que multiplica tu valor/hora con IA estratégica
+                </div>
+                </div>
+                                
+                <div class="module-card fade-in">
+                    <div class="module-header">
+                        <div class="module-day">DÍA 4</div>
+                        <h3>El Arsenal Completo del Profesional IA</h3>
+                    </div>
+                    <div class="module-objective">
+                        <strong>🎯 Objetivo:</strong> Dominio de herramientas avanzadas
+                    </div>
+                    <ul class="module-topics">
+                        <li>Ecosistema completo: ChatGPT, Claude, Gemini, Midjourney</li>
+                        <li>IA multimodal: texto, imagen, video, voz</li>
+                        <li>Integración con tus herramientas actuales</li>
+                    </ul>
+                    <div class="module-result">
+                        <strong>🎯 Resultado del día:</strong> Tu "suite profesional" de IA configurada
+                    </div>
+                </div>
+                
+                <div class="module-card fade-in fade-in-delay-1">
+                    <div class="module-header">
+                        <div class="module-day">DÍA 5</div>
+                        <h3>De Usuario a Estratega IA</h3>
+                    </div>
+                    <div class="module-objective">
+                        <strong>🎯 Objetivo:</strong> Mentalidad de transformación y visión a futuro
+                    </div>
+                    <ul class="module-topics">
+                        <li>Construye tu "Sistema IA Personal" completo</li>
+                        <li>Estrategia para mantenerte siempre actualizado</li>
+                        <li>Plan de implementación para los próximos 90 días</li>
+                    </ul>
+                    <div class="module-result">
+                        <strong>🎯 Resultado del día:</strong> Tu roadmap personal hacia el dominio de IA
+                    </div>
+                </div>
+            </div>
+        </div>
+           
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="inscripcionia.html" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; font-size: 1.4rem; padding: 24px 48px; font-weight: 800; border-radius: 16px; text-decoration: none; display: inline-block; box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;">
+            MATRICÚLATE AHORA        </a>
+    </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="target-audience" style="padding:60px" id="para-quien">
+            <div class="section-header">
+                <div class="section-badge fade-in">
+                    <span>🎯</span>
+                    ESTE CURSO ES PARA TI
+                </div>
+                <h2 class="section-title fade-in">Este curso es para ti si...</h2>
+                <p class="section-subtitle fade-in">
+                    No importa tu nivel actual con la IA, este curso está diseñado para llevarte al siguiente nivel.
+                </p>
+            </div>
+            
+            <div class="audience-grid">
+                <div class="audience-card fade-in">
+                    <span class="audience-emoji">🌱</span>
+                    <h4>Principiante en IA</h4>
+                    <p>Quieres aprovechar la IA pero aún no sabes por dónde empezar.</p>
+                </div>
+                
+                <div class="audience-card fade-in fade-in-delay-1">
+                    <span class="audience-emoji">💡</span>
+                    <h4>Usuario de ChatGPT</h4>
+                    <p>Ya usaste ChatGPT, pero sientes que no le sacas todo el jugo.</p>
+                </div>
+                
+                <div class="audience-card fade-in fade-in-delay-2">
+                    <span class="audience-emoji">💼</span>
+                    <h4>Emprendedor/Profesional</h4>
+                    <p>Eres emprendedor, profesional o estudiante y quieres ser más competitivo.</p>
+                </div>
+                
+                <div class="audience-card fade-in fade-in-delay-3">
+                    <span class="audience-emoji">⚡</span>
+                    <h4>Busca Productividad</h4>
+                    <p>Quieres ahorrar tiempo, ser más productivo y estar al día con las últimas tendencias.</p>
+                </div>
+            
+        </div>
+
+        </section>
+        <section>
+  <!-- Bonus Section -->
+        <div style="background-color: #676af5; padding:60px; margin-top:60px;">
+            <h3 style="color: #ffffff; font-size: 1.8rem; margin-bottom: 24px; text-align: center;">Matricúlate hoy en el Curso de Transformación IA </h3>
+
+            <div style="max-width: 400px; margin: 60px auto; text-align: left;  ">
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: #34d399;"></strong> <span style="color: #FFFFFF";>⚡ Clases en Vivo </span>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: #34d399;"></strong> <span style="color: #FFFFFF">🛠️ Kit de Plantillas IA para Resultados Inmediatos </span>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: #34d399;"></strong> <span style="color: #FFFFFF">📈 Actualizaciones Exclusivas por 12 meses </span>
+                    </div>
+
+                     <div style="margin-bottom: 20px;">
+                        <strong style="color: #34d399;"></strong> <span  style="color: #FFFFFF">💼 Ejemplos prácticos en todas las clases </span>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: #34d399;"></strong> <span style="color: #FFFFFF">🎯 Biblioteca Premium de Prompts Profesionales </span>
+                    </div>
+                     <div style="margin-bottom: 20px;">
+                        <strong style="color: #34d399;"></strong> <span style="color: #FFFFFF">📋 Examen de Fin de Curso </span>
+                    </div>
+
+
+                     <div style="margin-bottom: 20px;">
+                        <strong style="color: #34d399;"></strong> <span style="color: #FFFFFF">🏆 Certificado </span>
+                    </div>
+
+                  
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Testimonials Section -->
+    <section style="padding: 80px 0; background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>⭐</span>
+                        METODO PROBADO
+                </div>
+                <h2 class="section-title funciona">Tu Ventaja Competitiva en Solo 10 Horas</h2>
+                  <h3 class="section-subtitle funciona">metodología probada ,  resultados garantizados</h3>
+            </div>
+<div style="max-width: 600px; margin: 8px auto; padding: 0 20px;">
+    <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px;">
+        
+        <div style="display: flex; align-items: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+            <span style="font-size: 2.5rem; margin-right: 20px;">🎯</span>
+            <div>
+                <h4 style="color: #363636; font-weight: 700; margin-bottom: 4px;">MÉTODO EXACTO</h4>
+                <p style="color: rgba(77, 77, 77, 0.8); margin: 0;">Sin perder meses en ensayo y error</p>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+            <span style="font-size: 2.5rem; margin-right: 20px;">⚡</span>
+            <div>
+                <h4 style="color: #363636; font-weight: 700; margin-bottom: 4px;">SISTEMA PASO A PASO</h4>
+                <p style="color: rgba(77, 77, 77, 0.8); margin: 0;">Framework que funciona desde el día 1</p>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+            <span style="font-size: 2.5rem; margin-right: 20px;">🚀</span>
+            <div>
+                <h4 style="color: #363636; font-weight: 700; margin-bottom: 4px;">DIFERENCIACIÓN INMEDIATA</h4>
+                <p style="color: rgba(77, 77, 77, 0.8); margin: 0;">Destacas como el experto IA</p>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+            <span style="font-size: 2.5rem; margin-right: 20px;">💎</span>
+            <div>
+                <h4 style="color: #363636; font-weight: 700; margin-bottom: 4px;">CALIDAD PROBADA</h4>
+                <p style="color: rgba(77, 77, 77, 0.8); margin: 0;">10 horas > 100 horas perdidas en YouTube</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+            </section>
+
+    <!-- Price Section -->
+ <section style="padding: 80px 0; background:linear-gradient(135deg, #370596 0%, #000000 50%, #b70288 100%); text-align: center;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="color: white; font-size: 2rem; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">
+            ✨ Inscríbete en el Curso AHORA y Domina la IA<br>
+        </h2>
+        <p style="color: rgba(255, 255, 255, 0.95); font-size: 1rem; font-weight: 600; margin-bottom: 40px; line-height: 1.6;">
+            Sabemos que tienes el potencial para lograr cosas extraordinarias. 
+            <br><strong>Blinda tu carrera o negocio, dominando la tecnología más disruptiva de nuestra era.</strong>
+            <br><br>
+            <span style="color: white; font-size: 1rem; font-weight: 800; margin-bottom: 24px; line-height: 1.2;" >Precio regular: <s>S/.399 soles</s><br>
+            <span style="color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 24px; line-height: 1.2;"  >Precio ahora: S/.249 soles </span>
+        </p>
+        
+        
+        <a href="inscripcionia.html" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; font-size: 1.4rem; padding: 24px 48px; font-weight: 800; border-radius: 16px; text-decoration: none; display: inline-block; box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;">
+            MATRICÚLATE AHORA        </a>
+        <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin-top: 20px; font-weight: 500;">
+            💝 Tu futuro te está esperando • El cambio empieza contigo • Acceso inmediato
+        </p>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>SmartChatix</h3>
+                <p>Transformando vidas y carreras a través del poder de la Inteligencia Artificial</p>
+                <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                    <p>&copy; 2025 SmartChatix. Todos los derechos reservados.</p>
+                    <p style="margin-top: 8px; font-size: 0.9rem;">
+                        <a href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Términos y Condiciones</a> | 
+                        <a href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Política de Privacidad</a>
+                    </p>
+                </div>
+            </div>
+        </div>    </footer>
+
+    <script>
+        // Countdown Timer
+        function initCountdown() {
+            // Set the countdown date (2 days from now)
+            const countdownDate = new Date('2025-10-06T23:59:59').getTime();
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+                
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.querySelector('.countdown-banner').innerHTML = '<div class="countdown-content"><span class="countdown-text">🔥 ¡OFERTA TERMINADA! Precio regular: S/. 599</span></div>';
+                }
+            }
+            
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        // Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initCountdown();
+            
+            // Observe elements for animations
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some dynamic effects
+        document.addEventListener('mousemove', function(e) {
+            const cards = document.querySelectorAll('.benefit-card, .module-card, .audience-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const deltaX = (x - centerX) / centerX;
+                    const deltaY = (y - centerY) / centerY;
+                    
+                    card.style.transform = `perspective(1000px) rotateY(${deltaX * 5}deg) rotateX(${-deltaY * 5}deg) translateZ(10px)`;
+                }
+            });
+        });
+
+        // Reset card transforms when mouse leaves
+        document.addEventListener('mouseleave', function() {
+            const cards = document.querySelectorAll('.benefit-card, .module-card, .audience-card');
+            cards.forEach(card => {
+                card.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
