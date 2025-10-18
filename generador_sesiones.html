@@ -2,13 +2,35 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Generador de Sesiones</title>
+    <title>Generador de Sesiones - SmartChatix</title>
     <style>
         body { 
             font-family: Arial; 
             max-width: 600px; 
             margin: 50px auto;
             padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .logo-container img {
+            height: 50px;
+            width: auto;
+        }
+        .logo-container h1 {
+            margin: 0;
+            color: #333;
+            font-size: 28px;
         }
         input, select, textarea { 
             width: 100%; 
@@ -80,7 +102,13 @@
     </style>
 </head>
 <body>
-    <h1>🎓 Generador de Sesiones de Aprendizaje</h1>
+    <div class="header">
+        <div class="logo-container">
+            <img src="https://smartchatix.com/images/smartchatix_logo.png" alt="SmartChatix Logo">
+            <h1>SmartChatix</h1>
+        </div>
+        <h2 style="margin: 10px 0 0 0; color: #666; font-size: 18px;">🎓 Generador de Sesiones de Aprendizaje</h2>
+    </div>
     
     <div class="test-mode" id="testMode">
         ⚠️ MODO REAL - Conectado a n8n
