@@ -55,42 +55,76 @@
             font-weight: 400;
             margin-top: 8px;
         }
-        
-        .intro-card {
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 32px;
-        }
-        
-        .intro-card h2 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-        }
-        
-        .intro-card p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.7;
-        }
-        
-        .features {
+
+        /* Progress Steps */
+        .progress-steps {
             display: flex;
-            gap: 16px;
-            margin-top: 20px;
-            font-size: 13px;
-            color: #888;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
         }
-        
-        .features span {
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: #e5e5e5;
+            z-index: 0;
+        }
+
+        .step.active:not(:last-child)::after {
+            background: #1a1a1a;
+        }
+
+        .step-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #e5e5e5;
+            color: #999;
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
         }
-        
+
+        .step.active .step-circle {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .step.completed .step-circle {
+            background: #22c55e;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 12px;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: #1a1a1a;
+        }
+
+        /* Form Card */
         .form-card {
             background: white;
             border: 1px solid #e5e5e5;
@@ -98,26 +132,25 @@
             padding: 40px;
             margin-bottom: 24px;
         }
-        
-        .form-section {
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid #f0f0f0;
+
+        .form-step {
+            display: none;
         }
-        
-        .form-section:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+
+        .form-step.active {
+            display: block;
         }
-        
-        .form-section h3 {
-            font-size: 14px;
+
+        .step-title {
+            font-size: 20px;
             font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 32px;
         }
         
         .form-group {
@@ -160,10 +193,154 @@
             margin-top: 6px;
             line-height: 1.5;
         }
-        
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 3px solid #1a1a1a;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Images Grid */
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .image-card {
+            background: #f8f9fa;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 12px;
+            position: relative;
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 120px;
+            background: #fff;
+            border: 2px dashed #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .image-preview.empty {
+            cursor: pointer;
+            font-size: 32px;
+            color: #ccc;
+        }
+
+        .image-card input[type="text"] {
+            font-size: 12px;
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+
+        .remove-img-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            width: 24px;
+            height: 24px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-image-card {
+            background: white;
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .add-image-card:hover {
+            border-color: #1a1a1a;
+            background: #fafafa;
+        }
+
+        .add-image-card span {
+            font-size: 48px;
+            color: #ccc;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .newsletter {
-            margin: 32px 0;
-            padding: 20px;
+            margin: 24px 0;
+            padding: 16px;
             background: #f8f8f8;
             border-radius: 6px;
         }
@@ -182,33 +359,6 @@
             width: auto;
             margin-top: 2px;
             cursor: pointer;
-        }
-        
-        button {
-            width: 100%;
-            padding: 16px;
-            background: #1a1a1a;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        button:hover {
-            background: #000;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        button:disabled {
-            background: #e0e0e0;
-            color: #999;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
         }
         
         #loading {
@@ -315,15 +465,26 @@
             .form-card {
                 padding: 24px;
             }
-            
-            .intro-card {
-                padding: 24px;
+
+            .progress-steps {
+                padding: 16px;
             }
-            
-            .features {
-                flex-direction: column;
-                gap: 8px;
+
+            .step-label {
+                display: none;
             }
+
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        input[type="file"] {
+            display: none;
         }
     </style>
 </head>
@@ -336,34 +497,49 @@
             </div>
             <p class="subtitle">Generador de Artículos Científicos</p>
         </div>
-        
-        <div class="intro-card">
-            <h2>Crea tu artículo científico en minutos</h2>
-            <p>Estructura profesional con formato académico estándar. Ideal para investigadores, estudiantes de posgrado y profesionales que necesitan documentar sus investigaciones.</p>
-            <div class="features">
-                <span>✓ Formato académico</span>
-                <span>✓ Primera versión gratuita</span>
-                <span>✓ Listo en 60-90 segundos</span>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Autor</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Artículo</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+                <div class="step-label">Contenido</div>
+            </div>
+            <div class="step" data-step="4">
+                <div class="step-circle">4</div>
+                <div class="step-label">Imágenes</div>
+            </div>
+            <div class="step" data-step="5">
+                <div class="step-circle">5</div>
+                <div class="step-label">Finalizar</div>
             </div>
         </div>
         
         <form id="articuloForm" class="form-card">
-            <!-- INFORMACIÓN DEL AUTOR -->
-            <div class="form-section">
-                <h3>Información del Autor</h3>
+            <!-- STEP 1: Información del Autor -->
+            <div class="form-step active" data-step="1">
+                <h2 class="step-title">Información del Autor</h2>
+                <p class="step-description">Datos sobre ti y tus colaboradores</p>
                 
                 <div class="form-group">
-                    <label>Nombre completo</label>
+                    <label>Nombre completo *</label>
                     <input name="nombre_autor" placeholder="Dr. Juan Pérez García" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Afiliación institucional</label>
+                    <label>Afiliación institucional *</label>
                     <input name="afiliacion" placeholder="Universidad Nacional de Ingeniería" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Email de contacto</label>
+                    <label>Email de contacto *</label>
                     <input name="email" type="email" placeholder="contacto@ejemplo.com" required>
                 </div>
                 
@@ -372,19 +548,25 @@
                     <input name="coautores" placeholder="Separados por comas">
                     <p class="helper-text">Ejemplo: Dra. María López, Ing. Carlos Rodríguez</p>
                 </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" disabled>Anterior</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Siguiente</button>
+                </div>
             </div>
 
-            <!-- DATOS DEL ARTÍCULO -->
-            <div class="form-section">
-                <h3>Datos del Artículo</h3>
+            <!-- STEP 2: Datos del Artículo -->
+            <div class="form-step" data-step="2">
+                <h2 class="step-title">Datos del Artículo</h2>
+                <p class="step-description">Información básica de tu investigación</p>
                 
                 <div class="form-group">
-                    <label>Título del artículo</label>
-                    <input name="titulo_articulo" placeholder="Título claro y descriptivo de la investigación" required>
+                    <label>Título del artículo *</label>
+                    <input name="titulo_articulo" placeholder="Título claro y descriptivo" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Área de conocimiento</label>
+                    <label>Área de conocimiento *</label>
                     <select name="area" required>
                         <option value="">Seleccionar</option>
                         <option>Ingeniería y Tecnología</option>
@@ -398,12 +580,12 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Campo específico</label>
-                    <input name="campo_especifico" placeholder="Inteligencia Artificial, Biotecnología, Educación Digital..." required>
+                    <label>Campo específico *</label>
+                    <input name="campo_especifico" placeholder="Ej: Inteligencia Artificial" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Tipo de artículo</label>
+                    <label>Tipo de artículo *</label>
                     <select name="tipo_articulo" required>
                         <option value="">Seleccionar</option>
                         <option>Investigación Original</option>
@@ -414,84 +596,122 @@
                         <option>Comunicación Corta</option>
                     </select>
                 </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Siguiente</button>
+                </div>
             </div>
 
-            <!-- CONTENIDO DE LA INVESTIGACIÓN -->
-            <div class="form-section">
-                <h3>Contenido de la Investigación</h3>
+            <!-- STEP 3: Contenido -->
+            <div class="form-step" data-step="3">
+                <h2 class="step-title">Contenido de la Investigación</h2>
+                <p class="step-description">El corazón de tu artículo científico</p>
                 
                 <div class="form-group">
-                    <label>Resumen de la investigación</label>
-                    <textarea name="resumen" placeholder="Describe brevemente el problema, metodología y principales hallazgos (150-250 palabras)" required></textarea>
+                    <label>Resumen de la investigación *</label>
+                    <textarea name="resumen" placeholder="Describe el problema, metodología y hallazgos (150-250 palabras)" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Objetivo principal</label>
-                    <textarea name="objetivo" placeholder="¿Qué busca demostrar o investigar este artículo?" required></textarea>
+                    <label>Objetivo principal *</label>
+                    <textarea name="objetivo" placeholder="¿Qué busca demostrar?" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Metodología utilizada</label>
+                    <label>Metodología utilizada *</label>
                     <select name="metodologia" id="metodologiaSelect" required>
                         <option value="">Seleccionar</option>
                         <option>Cuantitativa</option>
                         <option>Cualitativa</option>
-                        <option>Mixta (Cuantitativa-Cualitativa)</option>
+                        <option>Mixta</option>
                         <option>Experimental</option>
-                        <option>Cuasi-experimental</option>
                         <option>Observacional</option>
                         <option>Estudio de Caso</option>
                         <option>Revisión Sistemática</option>
-                        <option>Meta-análisis</option>
-                        <option>Investigación-Acción</option>
-                        <option>Etnográfica</option>
-                        <option>Fenomenológica</option>
-                        <option>Descriptiva</option>
-                        <option>Correlacional</option>
-                        <option value="otro">Otro (especificar)</option>
+                        <option value="otro">Otro</option>
                     </select>
                 </div>
                 
                 <div class="form-group" id="metodologiaOtroGroup" style="display: none;">
-                    <label>Describe tu metodología</label>
-                    <textarea name="metodologia_otro" id="metodologiaOtro" placeholder="Describe los métodos, técnicas o enfoques utilizados en tu investigación"></textarea>
+                    <label>Describe tu metodología *</label>
+                    <textarea name="metodologia_otro" id="metodologiaOtro"></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Resultados principales</label>
-                    <textarea name="resultados" placeholder="Resumen de los hallazgos más importantes" required></textarea>
+                    <label>Resultados principales *</label>
+                    <textarea name="resultados" placeholder="Hallazgos más importantes" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Palabras clave (3-6 palabras)</label>
-                    <input name="palabras_clave" placeholder="machine learning, educación, análisis de datos" required>
-                    <p class="helper-text">Separadas por comas</p>
+                    <label>Palabras clave (3-6 palabras) *</label>
+                    <input name="palabras_clave" placeholder="machine learning, educación, datos" required>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Siguiente</button>
                 </div>
             </div>
 
-            <!-- INFORMACIÓN ADICIONAL -->
-            <div class="form-section">
-                <h3>Información Adicional</h3>
-                
+            <!-- STEP 4: Imágenes -->
+            <div class="form-step" data-step="4">
+                <h2 class="step-title">Imágenes y Figuras</h2>
+                <p class="step-description">Añade las capturas, gráficas o diagramas de tu investigación</p>
+
+                <div class="info-box">
+                    <p>💡 Las imágenes se insertarán automáticamente en el documento con sus títulos. Máximo 10 imágenes.</p>
+                </div>
+
+                <div class="images-grid" id="imagesGrid">
+                    <div class="add-image-card" onclick="document.getElementById('addImageInput').click()">
+                        <span>+</span>
+                    </div>
+                </div>
+
+                <input type="file" id="addImageInput" accept="image/*" onchange="addImage(this)">
+
+                <div class="form-group">
+                    <label>¿Incluirás tablas de datos?</label>
+                    <select name="incluye_tablas">
+                        <option value="no">No</option>
+                        <option value="si">Sí</option>
+                    </select>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- STEP 5: Finalizar -->
+            <div class="form-step" data-step="5">
+                <h2 class="step-title">Finalizar</h2>
+                <p class="step-description">Últimos detalles antes de generar tu artículo</p>
+
                 <div class="form-group">
                     <label>Referencias principales (opcional)</label>
-                    <textarea name="referencias" placeholder="Lista las fuentes más importantes consultadas"></textarea>
+                    <textarea name="referencias" placeholder="Lista tus fuentes más importantes"></textarea>
                 </div>
                 
                 <div class="form-group">
                     <label>Notas especiales (opcional)</label>
-                    <textarea name="notas" placeholder="Requisitos de formato, estilo o contenido específico"></textarea>
+                    <textarea name="notas" placeholder="Requisitos específicos de formato o contenido"></textarea>
+                </div>
+
+                <div class="newsletter">
+                    <label>
+                        <input type="checkbox" name="newsletter" value="si">
+                        <span>Recibir recursos para investigadores y actualizaciones</span>
+                    </label>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Anterior</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Generar Artículo</button>
                 </div>
             </div>
-            
-            <div class="newsletter">
-                <label>
-                    <input type="checkbox" name="newsletter" value="si">
-                    <span>Recibir plantillas científicas, recursos para investigadores y actualizaciones</span>
-                </label>
-            </div>
-            
-            <button type="submit" id="submitBtn">Generar Artículo Científico</button>
         </form>
         
         <div id="loading">
@@ -519,16 +739,63 @@
         </div>
     </div>
 
-    <style>
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
-
     <script>
         const WEBHOOK_URL = 'https://automation-n8n.gnrjtm.easypanel.host/webhook/ebbeee7f-2ac7-4575-bcc8-85cc485ae65d';
+        
+        let currentStep = 1;
+        let uploadedImages = [];
 
-        // Manejar el campo de metodología "Otro"
+        // Step Navigation
+        function nextStep() {
+            if (validateCurrentStep()) {
+                currentStep++;
+                updateSteps();
+            }
+        }
+
+        function prevStep() {
+            currentStep--;
+            updateSteps();
+        }
+
+        function updateSteps() {
+            // Update step indicators
+            document.querySelectorAll('.step').forEach(step => {
+                const stepNum = parseInt(step.dataset.step);
+                step.classList.remove('active', 'completed');
+                if (stepNum === currentStep) {
+                    step.classList.add('active');
+                } else if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+
+            // Update form steps
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+                if (parseInt(step.dataset.step) === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function validateCurrentStep() {
+            const currentStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const requiredFields = currentStepEl.querySelectorAll('[required]');
+            
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {
+                    field.focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Metodología "Otro"
         document.getElementById('metodologiaSelect').addEventListener('change', function(e) {
             const otroGroup = document.getElementById('metodologiaOtroGroup');
             const otroTextarea = document.getElementById('metodologiaOtro');
@@ -539,15 +806,106 @@
             } else {
                 otroGroup.style.display = 'none';
                 otroTextarea.required = false;
-                otroTextarea.value = '';
             }
         });
 
+        // Image handling
+        function addImage(input) {
+            if (input.files && input.files[0]) {
+                if (uploadedImages.length >= 10) {
+                    alert('Máximo 10 imágenes permitidas');
+                    return;
+                }
+
+                const file = input.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const imageData = {
+                        id: Date.now(),
+                        file: file,
+                        base64: e.target.result.split(',')[1],
+                        preview: e.target.result,
+                        titulo: '',
+                        descripcion: ''
+                    };
+                    
+                    uploadedImages.push(imageData);
+                    renderImages();
+                };
+                
+                reader.readAsDataURL(file);
+            }
+            input.value = '';
+        }
+
+        function renderImages() {
+            const grid = document.getElementById('imagesGrid');
+            grid.innerHTML = '';
+
+            uploadedImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                card.innerHTML = `
+                    <button type="button" class="remove-img-btn" onclick="removeImage(${img.id})">×</button>
+                    <div class="image-preview">
+                        <img src="${img.preview}" alt="Preview">
+                    </div>
+                    <input type="text" 
+                           placeholder="Título de la figura" 
+                           value="${img.titulo}"
+                           onchange="updateImageTitle(${img.id}, this.value)"
+                           required>
+                    <p style="font-size: 11px; color: #888; margin: 4px 0 0 0;">Figura ${index + 1}</p>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Add "+" button
+            if (uploadedImages.length < 10) {
+                const addCard = document.createElement('div');
+                addCard.className = 'add-image-card';
+                addCard.onclick = () => document.getElementById('addImageInput').click();
+                addCard.innerHTML = '<span>+</span>';
+                grid.appendChild(addCard);
+            }
+        }
+
+        function removeImage(id) {
+            uploadedImages = uploadedImages.filter(img => img.id !== id);
+            renderImages();
+        }
+
+        function updateImageTitle(id, title) {
+            const img = uploadedImages.find(i => i.id === id);
+            if (img) img.titulo = title;
+        }
+
+        // Form submission
         document.getElementById('articuloForm').onsubmit = async (e) => {
             e.preventDefault();
             
             const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            if (data.metodologia === 'otro') {
+                data.metodologia = data.metodologia_otro;
+            }
+            delete data.metodologia_otro;
+            
+            // Add images
+            data.imagenes = uploadedImages.map((img, index) => ({
+                orden: index + 1,
+                nombre: img.file.name,
+                tipo: img.file.type,
+                base64: img.base64,
+                titulo: img.titulo || `Figura ${index + 1}`,
+                descripcion: img.descripcion
+            }));
             
             document.getElementById('loading').style.display = 'block';
             document.getElementById('result').style.display = 'none';
@@ -566,13 +924,15 @@
                 
                 document.getElementById('result').className = 'success';
                 document.getElementById('result').innerHTML = `
-                    <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">Artículo generado exitosamente</h2>
-                    <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Tu artículo científico está listo para descargar</p>
+                    <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">✓ Artículo generado exitosamente</h2>
+                    <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
+                        Tu artículo con ${uploadedImages.length} imagen(es) está listo
+                    </p>
                     <a href="${result.downloadUrl}" download class="download-btn">
                         Descargar Artículo
                     </a>
                     <p style="margin-top: 24px; color: #888; font-size: 13px;">
-                        Revisa el contenido, ajusta detalles específicos y complementa con tus datos experimentales
+                        Las imágenes han sido insertadas automáticamente
                     </p>
                 `;
                 
@@ -581,9 +941,9 @@
             } catch (error) {
                 document.getElementById('result').className = 'error';
                 document.getElementById('result').innerHTML = `
-                    <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 12px; color: #ef4444;">Error al generar el artículo</h2>
+                    <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 12px; color: #ef4444;">Error al generar</h2>
                     <p style="color: #666; font-size: 14px; margin-bottom: 20px;">${error.message}</p>
-                    <a href="https://wa.me/51967717179?text=Tuve%20un%20error%20al%20generar%20mi%20artículo" 
+                    <a href="https://wa.me/51967717179?text=Error%20al%20generar%20artículo" 
                        target="_blank" class="download-btn" style="background: #ef4444;">
                         Reportar problema
                     </a>
