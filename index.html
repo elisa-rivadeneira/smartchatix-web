@@ -291,39 +291,44 @@
                 </div>
                 
                 <div class="contact-form-container fade-in fade-in-delay-1">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeoppdbw" method="POST">
                         <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                            <label for="nombre_empresa">Nombre o empresa</label>
+                            <input type="text" id="nombre_empresa" name="nombre_empresa" placeholder="Ej. Carlos de HidroTech" required>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="empresa">Empresa</label>
-                            <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o proyecto" required>
+                            <label for="contacto">Email o WhatsApp</label>
+                            <input type="text" id="contacto" name="contacto" placeholder="Comunicación directa" required>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Tu correo electrónico de contacto" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="presupuesto">Presupuesto</label>
-                            <select id="presupuesto" name="presupuesto" required>
-                                <option value="">Elige tu rango de inversión...</option>
-                                <option value="menos-5k">Menos de $5,000</option>
-                                <option value="5k-15k">$5,000 - $15,000</option>
-                                <option value="15k-50k">$15,000 - $50,000</option>
-                                <option value="50k-100k">$50,000 - $100,000</option>
-                                <option value="mas-100k">Más de $100,000</option>
+                            <label for="tipo_proyecto">Tipo de proyecto</label>
+                            <select id="tipo_proyecto" name="tipo_proyecto" required>
+                                <option value="">Selecciona el tipo de proyecto...</option>
+                                <option value="web-page">Web Page</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="erp">ERP</option>
+                                <option value="chatbot-ia">Chatbot IA</option>
+                                <option value="otro">Otro</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="mensaje">Cuéntame más sobre tu idea</label>
-                            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Comparte algunos detalles sobre lo que necesitas. Cuanto más sepamos, mejor podremos ayudarte."></textarea>
+                            <label for="descripcion">Describe brevemente tu idea</label>
+                            <textarea id="descripcion" name="descripcion" rows="3" placeholder="2–3 líneas, texto libre" required></textarea>
                         </div>
-                        
+
+                        <div class="form-group">
+                            <label for="presupuesto">Presupuesto aproximado (opcional)</label>
+                            <select id="presupuesto" name="presupuesto">
+                                <option value="">Selecciona tu presupuesto...</option>
+                                <option value="menos-500">Menos de $500</option>
+                                <option value="500-2000">$500–$2000</option>
+                                <option value="mas-2000">Más de $2000</option>
+                            </select>
+                        </div>
+
                         <button type="submit" class="submit-btn">
                             <span class="btn-text">ENVIAR SOLICITUD</span>
                             <span class="btn-icon">🚀</span>
@@ -411,27 +416,47 @@
         // Funcionalidad del formulario de contacto
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const submitBtn = this.querySelector('.submit-btn');
             const btnText = submitBtn.querySelector('.btn-text');
             const btnIcon = submitBtn.querySelector('.btn-icon');
-            
+
             // Cambiar estado del botón a "enviando"
             submitBtn.style.background = 'linear-gradient(135deg, #059669, #0d9488)';
             btnText.textContent = 'ENVIANDO...';
             btnIcon.textContent = '⏳';
             submitBtn.disabled = true;
-            
-            // Simular envío (aquí integrarías con tu backend)
-            setTimeout(() => {
-                // Cambiar a estado de éxito
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                btnText.textContent = '¡ENVIADO CON ÉXITO!';
-                btnIcon.textContent = '✅';
-                
-                // Resetear formulario
-                this.reset();
-                
+
+            // Enviar datos a Formspree
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Cambiar a estado de éxito
+                    submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    btnText.textContent = '¡ENVIADO CON ÉXITO!';
+                    btnIcon.textContent = '✅';
+
+                    // Resetear formulario
+                    this.reset();
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            })
+            .catch(error => {
+                // Cambiar a estado de error
+                submitBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                btnText.textContent = 'ERROR AL ENVIAR';
+                btnIcon.textContent = '❌';
+            })
+            .finally(() => {
                 // Volver al estado original después de 3 segundos
                 setTimeout(() => {
                     submitBtn.style.background = 'linear-gradient(135deg, #3b82f6, #8b5cf6)';
@@ -439,8 +464,7 @@
                     btnIcon.textContent = '🚀';
                     submitBtn.disabled = false;
                 }, 3000);
-                
-            }, 2000);
+            });
         });
 
         // Efectos adicionales para inputs del formulario
