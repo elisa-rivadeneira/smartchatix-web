@@ -575,6 +575,7 @@
             let nodes = [];
             let connections = [];
             let waves = []; // Agregar los círculos de vuelta
+            let mouseSparkles = []; // Sparkles que siguen al mouse
 
             // Configurar canvas
             function resizeCanvas() {
@@ -591,7 +592,94 @@
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
+
+                // Crear sparkles en la posición del mouse
+                for (let i = 0; i < 3; i++) {
+                    mouseSparkles.push(new MouseSparkle(mouseX, mouseY));
+                }
             });
+
+            // Clase para sparkles del mouse
+            class MouseSparkle {
+                constructor(x, y) {
+                    this.x = x + (Math.random() - 0.5) * 30;
+                    this.y = y + (Math.random() - 0.5) * 30;
+                    this.size = Math.random() * 3 + 1;
+                    this.life = 1;
+                    this.decay = Math.random() * 0.02 + 0.01;
+                    this.vx = (Math.random() - 0.5) * 2;
+                    this.vy = (Math.random() - 0.5) * 2;
+                    this.sparkleType = Math.floor(Math.random() * 3);
+                    this.rotation = Math.random() * Math.PI * 2;
+                    this.rotationSpeed = (Math.random() - 0.5) * 0.2;
+                }
+
+                update() {
+                    this.life -= this.decay;
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.vx *= 0.98;
+                    this.vy *= 0.98;
+                    this.rotation += this.rotationSpeed;
+                    this.size *= 0.99;
+                }
+
+                draw() {
+                    if (this.life <= 0) return;
+
+                    const alpha = this.life;
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+
+                    if (this.sparkleType === 0) {
+                        // Estrella brillante
+                        ctx.beginPath();
+                        for (let i = 0; i < 8; i++) {
+                            const angle = (i * Math.PI) / 4;
+                            const radius = i % 2 === 0 ? this.size * 2 : this.size;
+                            const x = Math.cos(angle) * radius;
+                            const y = Math.sin(angle) * radius;
+                            if (i === 0) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                        }
+                        ctx.closePath();
+                        ctx.fillStyle = `rgba(0, 191, 255, ${alpha})`;
+                        ctx.fill();
+
+                        // Glow
+                        ctx.shadowBlur = 10;
+                        ctx.shadowColor = `rgba(0, 191, 255, ${alpha})`;
+                        ctx.fill();
+                    } else if (this.sparkleType === 1) {
+                        // Círculo brillante
+                        ctx.beginPath();
+                        ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(138, 43, 226, ${alpha})`;
+                        ctx.shadowBlur = 8;
+                        ctx.shadowColor = `rgba(138, 43, 226, ${alpha})`;
+                        ctx.fill();
+                    } else {
+                        // Cruz brillante
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                        ctx.lineWidth = 2;
+                        ctx.shadowBlur = 6;
+                        ctx.shadowColor = `rgba(255, 255, 255, ${alpha})`;
+                        ctx.beginPath();
+                        ctx.moveTo(-this.size, 0);
+                        ctx.lineTo(this.size, 0);
+                        ctx.moveTo(0, -this.size);
+                        ctx.lineTo(0, this.size);
+                        ctx.stroke();
+                    }
+
+                    ctx.restore();
+                }
+
+                isDead() {
+                    return this.life <= 0 || this.size < 0.1;
+                }
+            }
 
             // Clase para ondas holográficas (los círculos bonitos)
             class Wave {
@@ -886,6 +974,22 @@
                     node.update();
                     node.draw();
                 });
+
+                // Actualizar y dibujar sparkles del mouse (muy adelante)
+                mouseSparkles.forEach((sparkle, index) => {
+                    sparkle.update();
+                    sparkle.draw();
+
+                    // Remover sparkles muertos
+                    if (sparkle.isDead()) {
+                        mouseSparkles.splice(index, 1);
+                    }
+                });
+
+                // Limitar número de sparkles para performance
+                if (mouseSparkles.length > 50) {
+                    mouseSparkles.splice(0, mouseSparkles.length - 50);
+                }
 
                 // Reconexión dinámica cada 3 segundos (180 frames a 60fps)
                 reconnectionTimer++;
