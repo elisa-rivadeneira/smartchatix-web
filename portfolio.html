@@ -7,15 +7,15 @@
     <link rel="icon" type="image/png" href="images/smartchatix_logo.png">
     <link rel="icon" type="image/svg+xml" href="images/smartchatix_logo.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Debug styles to test if CSS is working */
         .portfolio-section {
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%) !important;
+            background: #0d0d23 !important;
             min-height: 100vh !important;
             position: relative !important;
-            padding: 120px 0 !important;
+            padding: 80px 0 !important;
         }
 
         .portfolio-header h2 {
@@ -29,12 +29,119 @@
         }
 
         .portfolio-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)) !important;
-            border: 1px solid rgba(110, 231, 183, 0.1) !important;
-            border-radius: 20px !important;
-            padding: 32px !important;
-            backdrop-filter: blur(20px) !important;
-            margin-bottom: 30px !important;
+            background: linear-gradient(135deg, #0063a9 0%, #1f1f38 30%, #252545 60%, #1a1a2e 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            padding: 0 !important;
+            margin-bottom: 24px !important;
+            position: relative !important;
+            overflow: hidden !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .portfolio-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(135deg,
+                rgba(13, 16, 204, 0.15) 0%,
+                rgba(0, 162, 202, 0.12) 25%,
+                rgba(0, 8, 54, 0.12) 50%,
+                rgba(2, 41, 99, 0.15) 75%,
+                rgba(28, 181, 224, 0.15) 100%) !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+            pointer-events: none !important;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            box-shadow:
+                0 0 50px rgba(8, 138, 245, 0.3),
+                0 0 30px rgba(7, 139, 179, 0.2),
+                0 0 60px rgba(15, 0, 54, 0.158) !important;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1 !important;
+        }
+
+        .project-image {
+            width: 100% !important;
+            height: 200px !important;
+            object-fit: cover !important;
+            border-radius: 12px 12px 0 0 !important;
+            transition: transform 0.2s ease !important;
+        }
+
+        .portfolio-card:hover .project-image {
+            transform: scale(1.05) !important;
+        }
+
+        .project-content {
+            padding: 20px 24px 24px 24px !important;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%) !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .project-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-size: 1.25rem !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+            margin-bottom: 8px !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.015em !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .project-subtitle {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-size: 0.95rem !important;
+            color: rgba(255, 255, 255, 0.95) !important;
+            margin-bottom: 0 !important;
+            line-height: 1.4 !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .project-link {
+            position: absolute !important;
+            top: 12px !important;
+            right: 12px !important;
+            width: 28px !important;
+            height: 28px !important;
+            background: rgba(0, 0, 0, 0.4) !important;
+            border-radius: 6px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            opacity: 0 !important;
+            transition: all 0.2s ease !important;
+            text-decoration: none !important;
+        }
+
+        .portfolio-card:hover .project-link {
+            opacity: 1 !important;
+            background: rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .project-link::after {
+            content: '↗' !important;
+            color: #ffffff !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
+
+        .card-content {
+            position: relative !important;
+            z-index: 2 !important;
         }
 
         .portfolio-badge {
@@ -56,9 +163,12 @@
 
         .portfolio-grid {
             display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
-            gap: 30px !important;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+            gap: 24px !important;
             margin-bottom: 80px !important;
+            max-width: 1200px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
         .portfolio-card-wide {
@@ -66,22 +176,138 @@
         }
 
         .project-icon {
-            font-size: 3rem !important;
-            margin-bottom: 20px !important;
-            display: block !important;
+            font-size: 4rem !important;
+            margin-bottom: 24px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100px !important;
+            height: 100px !important;
+            border-radius: 25px !important;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+            cursor: pointer !important;
+            position: relative !important;
+        }
+
+        /* Iconos con personalidad única */
+        .portfolio-card:nth-child(1) .project-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e) !important;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(2) .project-icon {
+            background: linear-gradient(135deg, #4ecdc4, #7ed6cc) !important;
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(3) .project-icon {
+            background: linear-gradient(135deg, #45b7d1, #74c9dd) !important;
+            box-shadow: 0 10px 30px rgba(69, 183, 209, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(4) .project-icon {
+            background: linear-gradient(135deg, #f9ca24, #fdd85c) !important;
+            box-shadow: 0 10px 30px rgba(249, 202, 36, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(5) .project-icon {
+            background: linear-gradient(135deg, #6c5ce7, #8b7ff0) !important;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4) !important;
+        }
+
+        .portfolio-card:hover .project-icon {
+            transform: scale(1.2) rotate(10deg) !important;
+            animation: bounceIcon 0.6s ease !important;
+        }
+
+        @keyframes bounceIcon {
+            0% { transform: scale(1) rotate(0deg); }
+            30% { transform: scale(1.3) rotate(15deg); }
+            60% { transform: scale(1.1) rotate(8deg); }
+            100% { transform: scale(1.2) rotate(10deg); }
         }
 
         .portfolio-card h3 {
             color: #ffffff !important;
-            font-size: 1.5rem !important;
+            font-size: 1.9rem !important;
+            font-weight: 900 !important;
+            margin-bottom: 12px !important;
+            line-height: 1.3 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .project-category {
+            display: inline-block !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            font-size: 0.75rem !important;
             font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
             margin-bottom: 16px !important;
+            position: relative !important;
+            overflow: hidden !important;
+            animation: shimmer 2s infinite !important;
+        }
+
+        /* Categorías con colores únicos */
+        .portfolio-card:nth-child(1) .project-category {
+            background: linear-gradient(135deg, #ff6b6b, #ff8787) !important;
+            color: #ffffff !important;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(2) .project-category {
+            background: linear-gradient(135deg, #4ecdc4, #6ed3ca) !important;
+            color: #ffffff !important;
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(3) .project-category {
+            background: linear-gradient(135deg, #45b7d1, #65c4db) !important;
+            color: #ffffff !important;
+            box-shadow: 0 5px 15px rgba(69, 183, 209, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(4) .project-category {
+            background: linear-gradient(135deg, #f9ca24, #fbd84a) !important;
+            color: #2c3e50 !important;
+            box-shadow: 0 5px 15px rgba(249, 202, 36, 0.4) !important;
+        }
+
+        .portfolio-card:nth-child(5) .project-category {
+            background: linear-gradient(135deg, #6c5ce7, #8975ee) !important;
+            color: #ffffff !important;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4) !important;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .project-category::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+            animation: slideShimmer 2s infinite !important;
+        }
+
+        @keyframes slideShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .portfolio-card p {
-            color: rgba(255, 255, 255, 0.8) !important;
-            line-height: 1.6 !important;
-            margin-bottom: 24px !important;
+            color: #ffffff !important;
+            line-height: 1.7 !important;
+            margin-bottom: 32px !important;
+            font-size: 1.05rem !important;
+            font-weight: 500 !important;
         }
 
         .tech-stack {
@@ -92,44 +318,76 @@
         }
 
         .tech-tag {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(110, 231, 183, 0.2)) !important;
-            border: 1px solid rgba(168, 85, 247, 0.3) !important;
-            color: #A855F7 !important;
-            padding: 4px 12px !important;
-            border-radius: 20px !important;
-            font-size: 0.8rem !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 4px 10px !important;
+            border-radius: 12px !important;
+            font-size: 0.7rem !important;
             font-weight: 500 !important;
+            transition: all 0.2s ease !important;
+            cursor: pointer !important;
+            position: relative !important;
+            overflow: hidden !important;
         }
+
+        /* Tech tags heredan el color de su tarjeta padre */
+        .tech-tag:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+        }
+
+
+
+
 
         .project-links {
             display: flex !important;
-            gap: 12px !important;
+            gap: 10px !important;
+            margin-top: 16px !important;
         }
 
         .project-btn {
-            padding: 10px 20px !important;
-            border-radius: 10px !important;
+            padding: 6px 12px !important;
+            border-radius: 4px !important;
             text-decoration: none !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
-            transition: all 0.3s ease !important;
-            border: 1px solid transparent !important;
+            font-weight: 500 !important;
+            font-size: 0.8rem !important;
+            transition: all 0.15s ease !important;
+            border: none !important;
+            background: transparent !important;
         }
 
         .demo-btn {
-            background: linear-gradient(135deg, #6EE7B7, #4ADE80) !important;
-            color: #0f0f23 !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .demo-btn:hover {
+            color: #ffffff !important;
+            border-bottom-color: rgba(255, 255, 255, 0.6) !important;
         }
 
         .code-btn {
-            background: transparent !important;
+            color: rgba(255, 255, 255, 0.5) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .code-btn:hover {
             color: rgba(255, 255, 255, 0.8) !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
+            border-bottom-color: rgba(255, 255, 255, 0.4) !important;
+            transform: translateY(-1px) !important;
         }
 
         .featured-btn {
-            background: linear-gradient(135deg, #A855F7, #8B5CF6) !important;
+            background: rgba(255, 255, 255, 0.15) !important;
             color: #ffffff !important;
+        }
+
+        .featured-btn:hover {
+            background: rgba(255, 255, 255, 0.25) !important;
+            transform: translateY(-1px) !important;
         }
 
         .portfolio-subtitle {
@@ -188,22 +446,215 @@
             width: 100% !important;
             height: 100% !important;
             background:
-                radial-gradient(circle at 20% 30%, rgba(110, 231, 183, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 60% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%) !important;
-            animation: floatingParticles 20s ease-in-out infinite !important;
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 255, 165, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 60% 80%, rgba(28, 181, 224, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 210, 63, 0.05) 0%, transparent 50%) !important;
+            animation: floatingParticles 25s ease-in-out infinite !important;
         }
 
         @keyframes floatingParticles {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(10px) rotate(-1deg); }
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translateY(-30px) rotate(2deg) scale(1.1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-15px) rotate(-1deg) scale(0.9);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translateY(20px) rotate(3deg) scale(1.05);
+                opacity: 0.9;
+            }
         }
 
         .portfolio-card:hover {
             transform: translateY(-10px) !important;
-            border-color: rgba(110, 231, 183, 0.3) !important;
+            border-color: rgba(0, 11, 58, 0.3) !important;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 40px rgba(110, 231, 183, 0.1) !important;
+        }
+
+        /* Header estático que se mueve con el scroll */
+        header {
+            position: static !important;
+            top: unset !important;
+            left: unset !important;
+            right: unset !important;
+            z-index: unset !important;
+            transition: none !important;
+            transform: none !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.08) !important;
+            padding: 20px 0 !important;
+        }
+
+        /* Hero Portfolio Section */
+        .hero-portfolio {
+            text-align: center !important;
+            padding: 80px 0 60px 0 !important;
+            position: relative !important;
+        }
+
+        .hero-content {
+            max-width: 900px !important;
+            margin: 0 auto !important;
+        }
+
+        .hero-stats {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 60px !important;
+            margin-bottom: 50px !important;
+            flex-wrap: wrap !important;
+        }
+
+        .hero-stats .stat-item {
+            text-align: center !important;
+        }
+
+        .hero-stats .stat-number {
+            display: block !important;
+            font-size: 3rem !important;
+            font-weight: 900 !important;
+            background: linear-gradient(135deg, #6EE7B7, #A855F7) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            line-height: 1 !important;
+        }
+
+        .hero-stats .stat-label {
+            display: block !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 0.9rem !important;
+            font-weight: 500 !important;
+            margin-top: 8px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+        }
+
+        .hero-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-size: 2.5rem !important;
+            font-weight: 600 !important;
+            color: #ffffff !important;
+            line-height: 1.2 !important;
+            margin-bottom: 60px !important;
+            text-align: center !important;
+            letter-spacing: -0.025em !important;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff 0%, #067aff 25%, #7ec5ff 50%, #ffffff 75%, #1cb5e0 100%) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            display: inline !important;
+            font-weight: 700 !important;
+        }
+
+        .hero-description {
+            font-size: 1.3rem !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.6 !important;
+            margin-bottom: 50px !important;
+            max-width: 700px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .hero-technologies {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            gap: 30px !important;
+            margin-bottom: 40px !important;
+        }
+
+        .tech-category {
+            text-align: center !important;
+        }
+
+        .category-label {
+            display: block !important;
+            color: #6EE7B7 !important;
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            margin-bottom: 15px !important;
+        }
+
+        .tech-items {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(110, 231, 183, 0.2) !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tech-item:hover {
+            background: rgba(110, 231, 183, 0.1) !important;
+            border-color: rgba(110, 231, 183, 0.4) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            text-align: center !important;
+            padding: 60px 0 80px 0 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            margin-top: 40px !important;
+        }
+
+        .section-title {
+            font-size: 2.5rem !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            margin-bottom: 16px !important;
+            background: linear-gradient(135deg, #ffffff, #6EE7B7) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-weight: 400 !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-stats {
+                gap: 30px !important;
+            }
+
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+
+            .hero-description {
+                font-size: 1.1rem !important;
+            }
+
+            .hero-technologies {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
         }
     </style>
 </head>
@@ -231,32 +682,30 @@
                 <div class="floating-particles"></div>
             </div>
             <div class="portfolio-container">
-                <div class="portfolio-header fade-in">
-                    <div class="portfolio-badge">
-                        <span class="portfolio-badge-icon">🚀</span>
-                        PORTAFOLIO SMARTCHATIX
+                <!-- Hero Section -->
+                <div class="hero-portfolio fade-in">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Algunos proyectos realizados
+                        </h1>
                     </div>
-                    <h2>Explora nuestras creaciones</h2>
-                    <p class="portfolio-subtitle">
-                        Inteligencia, innovación y propósito en cada proyecto que desarrollamos.
-                    </p>
                 </div>
 
                 <div class="portfolio-grid">
                     <!-- Coach Assistant -->
-                    <div class="portfolio-card fade-in" data-tech="Laravel + OpenAI">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <div class="project-icon">🤖</div>
-                            <h3>Coach Asistente IA de Proyectos</h3>
-                            <p>Asistente de IA que ayuda a gestionar y planificar proyectos de ingeniería o académicos de manera eficiente.</p>
+                    <div class="portfolio-card fade-in">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop&crop=center" alt="Coach Assistant AI" class="project-image">
+                        <a href="https://app.smartchatix.com/" class="project-link"></a>
+                        <div class="project-content">
+                            <div class="project-category">Productividad AI</div>
+                            <h3 class="project-title">Coach Asistente IA de Proyectos</h3>
+                            <p class="project-subtitle">Asistente inteligente para gestión de proyectos académicos y de ingeniería</p>
                             <div class="tech-stack">
                                 <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node Js Express</span>
+                                <span class="tech-tag">Node.js Express</span>
                                 <span class="tech-tag">SQLite</span>
                                 <span class="tech-tag">Vite</span>
                                 <span class="tech-tag">Gemini API</span>
-
                             </div>
                             <div class="project-links">
                                 <a href="https://app.smartchatix.com/" class="project-btn demo-btn">Ver Demo</a>
@@ -266,16 +715,21 @@
                     </div>
 
                     <!-- Educational Sessions Generator -->
-                    <div class="portfolio-card fade-in fade-in-delay-1" data-tech="Python + GPT">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <div class="project-icon">📚</div>
-                            <h3>Generador de Sesiones Educativas</h3>
-                            <p>Genera sesiones educativas completas con objetivos, actividades y evaluaciones estructuradas.</p>
+                    <div class="portfolio-card fade-in fade-in-delay-1">
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=400&fit=crop&crop=center" alt="Educational Sessions" class="project-image">
+                        <a href="https://smartchatix.com/generador_sesiones.html" class="project-link"></a>
+                        <div class="project-content">
+                            <div class="project-category">Educación AI</div>
+                            <h3 class="project-title">Generador de Sesiones Educativas</h3>
+                            <p class="project-subtitle">Automatización completa de sesiones educativas con IA</p>
                             <div class="tech-stack">
+                                <span class="tech-tag">n8n</span>
                                 <span class="tech-tag">Python</span>
-                                <span class="tech-tag">GPT Models</span>
-                                <span class="tech-tag">Education AI</span>
+                                <span class="tech-tag">Puppeteer</span>
+                                <span class="tech-tag">Google Drive API</span>
+                                <span class="tech-tag">XML Processing</span>
+                                <span class="tech-tag">HTML to Image</span>
+                                <span class="tech-tag">Word Generation</span>
                             </div>
                             <div class="project-links">
                                 <a href="https://smartchatix.com/generador_sesiones.html" class="project-btn demo-btn">Ver Demo</a>
@@ -284,30 +738,36 @@
                     </div>
 
                     <!-- Scientific Articles Generator -->
-                    <div class="portfolio-card fade-in fade-in-delay-2" data-tech="Flask + OpenAI">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <div class="project-icon">📄</div>
-                            <h3>Generador de Artículos Científicos</h3>
-                            <p>Crea borradores de artículos científicos siguiendo estructura académica formal y reglas de citación.</p>
+                    <div class="portfolio-card fade-in fade-in-delay-2">
+                        <img src="https://images.unsplash.com/photo-1532153354457-5fbe1a3bb0b4?w=600&h=400&fit=crop&crop=center" alt="Scientific Articles" class="project-image">
+                        <a href="https://smartchatix.com/generador_articulos_cientificos.html" class="project-link"></a>
+                        <div class="project-content">
+                            <div class="project-category">Research AI</div>
+                            <h3 class="project-title">Generador de Artículos Científicos</h3>
+                            <p class="project-subtitle">Creación automática de papers académicos con LaTeX y Matplotlib</p>
                             <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
                                 <span class="tech-tag">Flask</span>
-                                <span class="tech-tag">OpenAI</span>
-                                <span class="tech-tag">Academic AI</span>
+                                <span class="tech-tag">LaTeX Converter</span>
+                                <span class="tech-tag">Matplotlib</span>
+                                <span class="tech-tag">n8n</span>
+                                <span class="tech-tag">Mathematical Formulas</span>
+                                <span class="tech-tag">OpenAI API</span>
                             </div>
                             <div class="project-links">
                                 <a href="https://smartchatix.com/generador_articulos_cientificos.html" class="project-btn demo-btn">Ver Demo</a>
                             </div>
-                        </div>btn
+                        </div>
                     </div>
 
                     <!-- Elixa English -->
-                    <div class="portfolio-card fade-in fade-in-delay-3" data-tech="React + AI">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <div class="project-icon">🗣️</div>
-                            <h3>Elixa English</h3>
-                            <p>App personal para practicar conversación en inglés con inteligencia artificial avanzada.</p>
+                    <div class="portfolio-card fade-in fade-in-delay-3">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop&crop=center" alt="Elixa English" class="project-image">
+                        <a href="#" class="project-link"></a>
+                        <div class="project-content">
+                            <div class="project-category">Language AI</div>
+                            <h3 class="project-title">Elixa English</h3>
+                            <p class="project-subtitle">App de conversación en inglés con IA avanzada</p>
                             <div class="tech-stack">
                                 <span class="tech-tag">Flutter</span>
                                 <span class="tech-tag">Whisper</span>
@@ -321,12 +781,13 @@
                     </div>
 
                     <!-- WebPages Collection -->
-                    <div class="portfolio-card portfolio-card-wide fade-in fade-in-delay-4" data-tech="Full-Stack">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <div class="project-icon">🌐</div>
-                            <h3>WebPages Collection</h3>
-                            <p>Colección de landing pages modernas y prototipos de e-commerce creados por SmartChatix.</p>
+                    <div class="portfolio-card fade-in fade-in-delay-4">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center" alt="Web Development" class="project-image">
+                        <a href="webpages.html" class="project-link"></a>
+                        <div class="project-content">
+                            <div class="project-category">Web Development</div>
+                            <h3 class="project-title">WebPages Collection</h3>
+                            <p class="project-subtitle">Landing pages modernas y prototipos e-commerce</p>
                             <div class="tech-stack">
                                 <span class="tech-tag">WordPress</span>
                                 <span class="tech-tag">Next.js</span>
@@ -384,21 +845,7 @@
             observer.observe(el);
         });
 
-        // Header con efecto suave
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (scrollTop > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 4px 20px rgba(99, 102, 241, 0.08)';
-                header.style.borderBottom = '1px solid rgba(99, 102, 241, 0.12)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-                header.style.borderBottom = '1px solid rgba(99, 102, 241, 0.08)';
-            }
-        });
+        // Header estático - no necesita JavaScript especial
 
         // Navegación suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
