@@ -547,14 +547,103 @@
             }
         }
 
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
                 padding: 0 25px;
+                justify-content: space-between;
+                align-items: center;
             }
-            
+
+            .hamburger-menu {
+                display: flex;
+            }
+
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+                border-top: 1px solid rgba(99, 102, 241, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 12px 25px;
+                color: #333;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid rgba(99, 102, 241, 0.05);
+            }
+
+            .nav-links a:hover {
+                background: rgba(99, 102, 241, 0.05);
+                color: #6366f1;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .back-button {
+                background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                color: white !important;
+                margin: 10px 25px 0;
+                border-radius: 8px;
+                padding: 12px 20px !important;
+                text-align: center;
+            }
+
+            .back-button:hover {
+                background: linear-gradient(135deg, #5855eb, #7c3aed) !important;
+                color: white !important;
             }
             
             .hero-container,
@@ -627,7 +716,15 @@
                     <div class="logo-icon">S</div>
                     SmartChatix
                 </a>
-                <div class="nav-links">
+
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-links" id="navLinks">
                     <a href="#proceso">Proceso</a>
                     <a href="#beneficios">Beneficios</a>
                     <a href="#video">Video Demo</a>
@@ -942,6 +1039,32 @@
                     el.style.animationDelay = (index * 0.1) + 's';
                 });
             }, 100);
+        });
+
+        // Funcionalidad del menú hamburguesa
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburgerMenu.addEventListener('click', function() {
+            // Toggle del menú
+            hamburgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al hacer click fuera de él
+        document.addEventListener('click', function(event) {
+            if (!hamburgerMenu.contains(event.target) && !navLinks.contains(event.target)) {
+                hamburgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
