@@ -26,7 +26,15 @@
                     <img src="images/smartchatix_logo.png" alt="SmartChatix" class="logo-image">
                     <span class="logo-text">SmartChatix</span>
                 </a>
-                <div class="nav-links">
+
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-links" id="navLinks">
                     <a href="#services">Servicios</a>
                     <a href="portfolio.html">Portafolio</a>
                     <a href="learn.html">Como Funciona</a>
@@ -1212,6 +1220,32 @@
         // Inicializar animación de números cuando se carga la página
         document.addEventListener('DOMContentLoaded', function() {
             animateStatNumbers();
+        });
+
+        // Funcionalidad del menú hamburguesa
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburgerMenu.addEventListener('click', function() {
+            // Toggle del menú
+            hamburgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al hacer click fuera de él
+        document.addEventListener('click', function(event) {
+            if (!hamburgerMenu.contains(event.target) && !navLinks.contains(event.target)) {
+                hamburgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
 
         // Funcionalidad del botón de WhatsApp
